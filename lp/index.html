@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dra. Sandra Müller — Rejuvenescimento Sem Cirurgia</title>
+  <meta name="description" content="Até 20 anos de rejuvenescimento sem cirurgia. Protocolo personalizado para mulheres acima de 35 anos.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       TOKENS
+    ========================================================= */
+    :root {
+      --gold:        #C09A52;
+      --gold-light:  #D4B878;
+      --gold-dark:   #8C7035;
+      --gold-pale:   #F2E8D0;
+      --cream:       #FAFAF7;
+      --cream-warm:  #F6F1E8;
+      --ink:         #100F0D;
+      --ink-soft:    #1E1C18;
+      --text:        #1A1815;
+      --muted:       #7A746C;
+      --white:       #FFFFFF;
+
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'Jost', sans-serif;
+
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* =========================================================
+       LAYOUT
+    ========================================================= */
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+
+    /* =========================================================
+       GOLD ORNAMENTS
+    ========================================================= */
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+      opacity: 0.35;
+    }
+
+    .rule--short {
+      width: 56px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 1;
+    }
+
+    .deco-line {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .deco-line::before, .deco-line::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+    }
+    .deco-line--center::before { background: linear-gradient(90deg, transparent, var(--gold)); }
+    .deco-line--center::after  { background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .deco-diamond {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
+       EYEBROW / OVERLINE
+    ========================================================= */
+    .eyebrow {
+      font-family: var(--ff-body);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* =========================================================
+       SCROLL-REVEAL BASE
+    ========================================================= */
+    .sr {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s var(--ease-out-expo),
+                  transform 0.9s var(--ease-out-expo);
+    }
+    .sr.sr-1 { transition-delay: 0.08s; }
+    .sr.sr-2 { transition-delay: 0.16s; }
+    .sr.sr-3 { transition-delay: 0.24s; }
+    .sr.sr-4 { transition-delay: 0.34s; }
+    .sr.in   { opacity: 1; transform: translateY(0); }
+
+    /* =========================================================
+       SECTION 01 — HERO
+    ========================================================= */
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    /* Ambient gold glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 70%;
+      height: 80%;
+      background: radial-gradient(ellipse at 70% 30%,
+        rgba(192, 154, 82, 0.07) 0%,
+        transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Noise grain overlay */
+    .hero__grain {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero__body {
+      position: relative;
+      z-index: 1;
+      padding: 130px 0 110px;
+    }
+
+    .hero__pre {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease-out-expo) forwards 0.15s;
+    }
+    .hero__pre-line {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero__h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(54px, 9vw, 108px);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) forwards 0.3s;
+    }
+    .hero__h1 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .hero__h1-sub {
+      font-family: var(--ff-display);
+      font-size: clamp(32px, 5vw, 68px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--muted);
+      margin-bottom: 60px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) forwards 0.5s;
+    }
+
+    .hero__sep {
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 40px;
+      animation: expandSep 0.7s var(--ease-out-expo) forwards 0.85s;
+    }
+
+    .hero__copy {
+      max-width: 560px;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out-expo) forwards 1.05s;
+    }
+
+    .hero__aside {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(192, 154, 82, 0.4);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.4s;
+    }
+
+    @media (max-width: 900px) { .hero__aside { display: none; } }
+
+    /* =========================================================
+       SECTION 02 — COMPARISON
+    ========================================================= */
+    .compare {
+      background: var(--ink);
+      padding: 130px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .compare > .rule { position: absolute; top: 0; left: 0; right: 0; width: 100%; opacity: 0.4; }
+
+    /* Subtle background ornament */
+    .compare::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192, 154, 82, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .compare__hd {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .compare__hd .eyebrow { margin-bottom: 22px; display: block; }
+
+    .compare__title {
+      font-family: var(--ff-display);
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .compare__title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    /* Two-column table */
+    .compare__table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid rgba(192, 154, 82, 0.12);
+    }
+    @media (max-width: 768px) {
+      .compare__table { grid-template-columns: 1fr; }
+    }
+
+    .compare__col {
+      padding: 52px 44px 60px;
+    }
+    .compare__col + .compare__col {
+      border-left: 1px solid rgba(192, 154, 82, 0.12);
+    }
+    @media (max-width: 768px) {
+      .compare__col + .compare__col { border-left: none; border-top: 1px solid rgba(192, 154, 82, 0.12); }
+    }
+    .compare__col--deliver { background: rgba(192, 154, 82, 0.03); }
+
+    .compare__col-title {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .compare__col--sell    .compare__col-title { color: rgba(255,255,255,0.25); }
+    .compare__col--deliver .compare__col-title { color: var(--gold); }
+
+    .compare__col-title-line {
+      flex: 1;
+      height: 1px;
+    }
+    .compare__col--sell    .compare__col-title-line { background: rgba(255,255,255,0.08); }
+    .compare__col--deliver .compare__col-title-line { background: linear-gradient(90deg, rgba(192,154,82,0.4), transparent); }
+
+    .compare__item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 26px;
+    }
+    .compare__item:last-child { margin-bottom: 0; }
+
+    .compare__dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      margin-top: 9px;
+      flex-shrink: 0;
+    }
+    .compare__col--sell    .compare__dot { background: rgba(255,255,255,0.18); }
+    .compare__col--deliver .compare__dot { background: var(--gold); }
+
+    .compare__text {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .compare__col--sell    .compare__text { color: rgba(255,255,255,0.28); }
+    .compare__col--deliver .compare__text { color: rgba(255,255,255,0.82); }
+
+    /* =========================================================
+       SECTION 03 — FRUSTRATION
+    ========================================================= */
+    .frustration {
+      padding: 150px 0;
+      background: var(--cream);
+    }
+
+    .frustration__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .frustration__inner { grid-template-columns: 1fr; gap: 64px; }
+    }
+
+    .frustration__left { position: sticky; top: 80px; }
+
+    .frustration__left .eyebrow { display: block; margin-bottom: 22px; }
+
+    .frustration__title {
+      font-family: var(--ff-display);
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+    .frustration__title em { font-style: italic; color: var(--gold-dark); }
+
+    .frustration__lead {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .frustration__quote {
+      margin-top: 44px;
+      padding: 28px 28px 28px 24px;
+      border-left: 1px solid var(--gold);
+      background: linear-gradient(90deg, rgba(192,154,82,0.06) 0%, transparent 100%);
+    }
+    .frustration__quote p {
+      font-family: var(--ff-display);
+      font-size: 19px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .frustration__quote p + p {
+      margin-top: 10px;
+      font-style: normal;
+      font-size: 15px;
+      font-family: var(--ff-body);
+      color: var(--muted);
+    }
+
+    .frustration__right { padding-top: 4px; }
+
+    .frustration__sublabel {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .frust-item {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(192, 154, 82, 0.12);
+    }
+    .frust-item:first-of-type { border-top: 1px solid rgba(192, 154, 82, 0.12); }
+
+    .frust-item__text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      padding-left: 22px;
+      position: relative;
+    }
+    .frust-item__text::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .frustration__close {
+      margin-top: 52px;
+      padding: 36px;
+      border: 1px solid rgba(192, 154, 82, 0.18);
+      background: linear-gradient(135deg,
+        rgba(192,154,82,0.06) 0%,
+        rgba(192,154,82,0.02) 100%);
+    }
+    .frustration__close p {
+      font-family: var(--ff-display);
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .frustration__close p + p {
+      margin-top: 14px;
+      font-family: var(--ff-body);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* =========================================================
+       SECTION 04 — PILLARS
+    ========================================================= */
+    .pillars {
+      background: var(--ink-soft);
+      padding: 150px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .pillars > .rule { position: absolute; top: 0; left: 0; right: 0; width: 100%; opacity: 0.4; }
+
+    .pillars::after {
+      content: '';
+      position: absolute;
+      top: 10%;
+      left: -15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(192,154,82,0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .pillars__hd {
+      text-align: center;
+      margin-bottom: 96px;
+      position: relative;
+      z-index: 1;
+    }
+    .pillars__hd .eyebrow { display: block; margin-bottom: 22px; }
+
+    .pillars__title {
+      font-family: var(--ff-display);
+      font-size: clamp(34px, 4.5vw, 58px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .pillars__title em { font-style: italic; color: var(--gold-light); }
+
+    .pillars__subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.03em;
+    }
+
+    .pillars__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(192, 154, 82, 0.1);
+      position: relative;
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .pillars__grid { grid-template-columns: 1fr; }
+    }
+
+    .pillar {
+      background: var(--ink-soft);
+      padding: 56px 48px 60px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.5s ease;
+    }
+    .pillar:hover { background: #161512; }
+
+    .pillar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transition: width 0.6s var(--ease-out-expo);
+    }
+    .pillar:hover::after { width: 100%; }
+
+    .pillar__bg-num {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-family: var(--ff-display);
+      font-size: 96px;
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(192, 154, 82, 0.05);
+      user-select: none;
+    }
+
+    .pillar__num {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .pillar__title {
+      font-family: var(--ff-display);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .pillar__body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* =========================================================
+       SECTION 05 — QUALIFICATION
+    ========================================================= */
+    .qual {
+      padding: 150px 0;
+      background: var(--cream-warm);
+    }
+
+    .qual__hd {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .qual__hd .eyebrow { display: block; margin-bottom: 22px; }
+
+    .qual__title {
+      font-family: var(--ff-display);
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .qual__title em { font-style: italic; color: var(--gold-dark); }
+
+    .qual__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(192, 154, 82, 0.15);
+    }
+    @media (max-width: 768px) { .qual__grid { grid-template-columns: 1fr; } }
+
+    .qual__col {
+      padding: 56px 48px 60px;
+      background: var(--cream-warm);
+    }
+    .qual__col--yes { background: #FAFAF6; }
+
+    .qual__col-label {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .qual__col--yes .qual__col-label { color: var(--gold-dark); }
+    .qual__col--no  .qual__col-label { color: var(--muted); }
+
+    .qual__col-label-line {
+      flex: 1; height: 1px;
+    }
+    .qual__col--yes .qual__col-label-line { background: linear-gradient(90deg, rgba(140,112,53,0.35), transparent); }
+    .qual__col--no  .qual__col-label-line { background: rgba(122,116,108,0.2); }
+
+    .qual-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .qual-item:last-child { margin-bottom: 0; }
+
+    .qual-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+      margin-top: 0;
+      line-height: 1;
+      padding-top: 3px;
+    }
+    .qual__col--yes .qual-icon { color: var(--gold); }
+    .qual__col--no  .qual-icon { color: var(--muted); }
+
+    .qual-text {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+    .qual__col--yes .qual-text { color: var(--text); }
+    .qual__col--no  .qual-text { color: var(--muted); }
+
+    /* =========================================================
+       SECTION 06 — CTA / FORM
+    ========================================================= */
+    .cta {
+      background: var(--ink);
+      padding: 150px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta > .rule { position: absolute; top: 0; left: 0; right: 0; width: 100%; opacity: 0.4; }
+
+    .cta::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse,
+        rgba(192,154,82,0.045) 0%,
+        transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .cta__inner .eyebrow { display: block; margin-bottom: 22px; }
+
+    .cta__title {
+      font-family: var(--ff-display);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .cta__title em { font-style: italic; color: var(--gold-light); }
+
+    .cta__body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.42);
+      margin-bottom: 68px;
+    }
+
+    /* ---- Form ---- */
+    .form { text-align: left; }
+
+    .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 580px) { .form__row { grid-template-columns: 1fr; } }
+
+    .form__field { margin-bottom: 14px; }
+
+    .form__label {
+      display: block;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .form__input,
+    .form__select,
+    .form__textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(192,154,82,0.18);
+      color: var(--white);
+      font-family: var(--ff-body);
+      font-size: 14px;
+      font-weight: 300;
+      padding: 14px 18px;
+      outline: none;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form__input:focus,
+    .form__select:focus,
+    .form__textarea:focus {
+      border-color: rgba(192,154,82,0.55);
+      background: rgba(255,255,255,0.06);
+    }
+    .form__input::placeholder,
+    .form__textarea::placeholder { color: rgba(255,255,255,0.18); }
+    .form__select { cursor: pointer; }
+    .form__select option { background: #111; color: #fff; }
+    .form__textarea { resize: vertical; min-height: 100px; }
+
+    .form__footer {
+      text-align: center;
+      margin-top: 44px;
+    }
+
+    .btn {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      background: none;
+    }
+
+    .btn__inner {
+      display: block;
+      padding: 20px 60px;
+      background: linear-gradient(105deg,
+        var(--gold-dark) 0%,
+        var(--gold)      50%,
+        var(--gold-light) 100%);
+      font-family: var(--ff-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ink);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s var(--ease-out-expo),
+                  box-shadow 0.3s var(--ease-out-expo);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg,
+        var(--gold-light) 0%,
+        var(--gold)       50%,
+        var(--gold-dark)  100%);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 0;
+    }
+    .btn:hover .btn__inner {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 48px rgba(192,154,82,0.28);
+    }
+    .btn:hover::before { opacity: 1; }
+
+    .form__note {
+      margin-top: 18px;
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    .footer {
+      background: #080807;
+      padding: 52px 0;
+      text-align: center;
+      border-top: 1px solid rgba(192, 154, 82, 0.08);
+    }
+    .footer__brand {
+      font-family: var(--ff-display);
+      font-size: 17px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================================
+       KEYFRAMES
+    ========================================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes expandSep {
+      from { width: 0; }
+      to   { width: 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+  <div class="hero__grain" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="hero__body">
+      <div class="hero__pre">
+        <span class="hero__pre-line"></span>
+        <span class="eyebrow" style="color:var(--gold)">Medicina Estética Avançada</span>
+      </div>
+
+      <h1 class="hero__h1">
+        Até <em>20 anos</em> de<br>rejuvenescimento
+      </h1>
+
+      <p class="hero__h1-sub">sem nenhum tipo de cirurgia.</p>
+
+      <div class="hero__sep"></div>
+
+      <p class="hero__copy">
+        Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
+      </p>
+    </div>
+  </div>
+
+  <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
+</section>
+
+
+<!-- ============================================================
+     COMPARISON
+============================================================ -->
+<section class="compare">
+  <div class="rule"></div>
+
+  <div class="wrap">
+    <div class="compare__hd sr">
+      <span class="eyebrow">A verdade sobre o mercado</span>
+      <h2 class="compare__title">
+        O que o mercado chama de tratamento<br>
+        <em>não é o que você está precisando.</em>
+      </h2>
+    </div>
+
+    <div class="compare__table sr sr-2">
+      <div class="compare__col compare__col--sell">
+        <div class="compare__col-title">
+          O que te vendem
+          <span class="compare__col-title-line"></span>
+        </div>
+
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Peeling forte e descamação intensa pra tratar melasma — quanto mais agride, mais funciona</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Harmonização pra qualquer rosto, independente de preparo ou diagnóstico</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Pacote com dez sessões pra você continuar voltando</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Procedimento isolado: só o botox, só o preenchimento, só o que você pediu</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Produto barato que entrega o mesmo resultado</p>
+        </div>
+      </div>
+
+      <div class="compare__col compare__col--deliver">
+        <div class="compare__col-title">
+          O que a gente entrega
+          <span class="compare__col-title-line"></span>
+        </div>
+
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Tratamento brando que alimenta a célula — a pele não precisa sofrer pra melhorar, e o resultado dura</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Primeiro prepara a pele, depois harmoniza — harmonizar rosto flácido ou manchado só piora</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Resultado em poucas sessões e você livre — sem dependência, sem te prender na clínica</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Protocolo completo e personalizado — porque tratar só uma parte sem ver o todo é o motivo pelo qual o resultado anterior não veio</p>
+        </div>
+        <div class="compare__item">
+          <span class="compare__dot"></span>
+          <p class="compare__text">Produto testado, tecnologia de ponta e mais de 40 especializações — porque barato demais usa ativo ruim, e quem paga a conta é o seu rosto</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FRUSTRATION
+============================================================ -->
+<section class="frustration">
+  <div class="wrap">
+    <div class="frustration__inner">
+
+      <div class="frustration__left">
+        <span class="eyebrow sr">Você reconhece esse caminho?</span>
+        <h2 class="frustration__title sr sr-1">
+          Você já tentou<br><em>mudar isso.</em>
+        </h2>
+        <p class="frustration__lead sr sr-2">
+          Já foi em clínica mais barata. Já fez procedimento isolado. Já seguiu receita do TikTok. Já esperou resultado que não veio.
+        </p>
+        <p class="frustration__lead sr sr-2">
+          E no final, foi menos dinheiro no seu bolso, mais frustração no espelho e o problema continuando exatamente onde estava.
+        </p>
+        <blockquote class="frustration__quote sr sr-3">
+          <p>O problema não está em você não ter tentado.</p>
+          <p>Está em quem te atendeu sem avaliar o seu caso.</p>
+        </blockquote>
+      </div>
+
+      <div class="frustration__right">
+        <p class="frustration__sublabel sr">Situações que você conhece de perto</p>
+
+        <div class="frust-item sr sr-1">
+          <p class="frust-item__text">Fez preenchimento e o rosto ficou pesado, não rejuvenesceu</p>
+        </div>
+        <div class="frust-item sr sr-2">
+          <p class="frust-item__text">Tratou a mancha e ela voltou mais escura do que antes</p>
+        </div>
+        <div class="frust-item sr sr-3">
+          <p class="frust-item__text">Comprou pacote, fez as sessões todas e o resultado sumiu em semanas</p>
+        </div>
+        <div class="frust-item sr sr-4">
+          <p class="frust-item__text">Chegou num consultório, mostrou o problema e saiu com um pacote padrão que não era pra você</p>
+        </div>
+
+        <div class="frustration__close sr">
+          <p>Esse não é um problema de sorte.</p>
+          <p>É um problema de protocolo.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PILLARS
+============================================================ -->
+<section class="pillars">
+  <div class="rule"></div>
+
+  <div class="wrap">
+    <div class="pillars__hd sr">
+      <span class="eyebrow">A única entrega que importa</span>
+      <h2 class="pillars__title">
+        Transformação real em semanas,<br>
+        <em>não em anos de dependência.</em>
+      </h2>
+      <p class="pillars__subtitle">Não é uma promessa vaga. É um método construído em cima de quatro pilares.</p>
+    </div>
+
+    <div class="pillars__grid sr sr-2">
+      <div class="pillar">
+        <span class="pillar__bg-num" aria-hidden="true">01</span>
+        <p class="pillar__num">Pilar 01</p>
+        <h3 class="pillar__title">Diagnóstico Individual</h3>
+        <p class="pillar__body">Nada de pacote padrão. Antes de qualquer procedimento, cada caso é avaliado individualmente e o protocolo é montado pra você — incluindo orientação de skincare em casa.</p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar__bg-num" aria-hidden="true">02</span>
+        <p class="pillar__num">Pilar 02</p>
+        <h3 class="pillar__title">Tratamento na Sequência Correta</h3>
+        <p class="pillar__body">Primeiro prepara, depois trata, depois harmoniza. Pele manchada ou flácida não recebe harmonização — recebe cuidado. A sequência errada é o motivo pelo qual o resultado anterior não veio.</p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar__bg-num" aria-hidden="true">03</span>
+        <p class="pillar__num">Pilar 03</p>
+        <h3 class="pillar__title">Arsenal Tecnológico</h3>
+        <p class="pillar__body">Peptídeos, microagulhamento robótico, ultrassom, skinbusters, ortomolecular e estética regenerativa. Tecnologias que a maioria das clínicas da região ainda não tem — com mais de 40 especializações e da primeira turma de peptídeos do país.</p>
+      </div>
+
+      <div class="pillar">
+        <span class="pillar__bg-num" aria-hidden="true">04</span>
+        <p class="pillar__num">Pilar 04</p>
+        <h3 class="pillar__title">Resultado e Liberdade</h3>
+        <p class="pillar__body">O resultado é entregue em poucas sessões e você vai embora livre. Sem pacote interminável. Sem dependência. Sem te prender na clínica pra continuar faturando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     QUALIFICATION
+============================================================ -->
+<section class="qual">
+  <div class="wrap">
+    <div class="qual__hd sr">
+      <span class="eyebrow">Critérios de atendimento</span>
+      <h2 class="qual__title">Para quem é <em>esse trabalho</em></h2>
+    </div>
+
+    <div class="qual__grid sr sr-2">
+      <div class="qual__col qual__col--yes">
+        <div class="qual__col-label">
+          É para você que
+          <span class="qual__col-label-line"></span>
+        </div>
+
+        <div class="qual-item">
+          <span class="qual-icon">✓</span>
+          <p class="qual-text">Já investiu em procedimento antes e ficou frustrada com o resultado</p>
+        </div>
+        <div class="qual-item">
+          <span class="qual-icon">✓</span>
+          <p class="qual-text">Quer rejuvenescer sem parecer que fez — naturalidade é inegociável pra você</p>
+        </div>
+        <div class="qual-item">
+          <span class="qual-icon">✓</span>
+          <p class="qual-text">Não aguenta mais o espelho de manhã e quer se reconhecer de novo</p>
+        </div>
+        <div class="qual-item">
+          <span class="qual-icon">✓</span>
+          <p class="qual-text">Sabe que barato demais cobra com o rosto — e não quer mais pagar esse preço</p>
+        </div>
+        <div class="qual-item">
+          <span class="qual-icon">✓</span>
+          <p class="qual-text">Está pronta pra seguir um protocolo personalizado e confiar no processo</p>
+        </div>
+      </div>
+
+      <div class="qual__col qual__col--no">
+        <div class="qual__col-label">
+          Não é para você que
+          <span class="qual__col-label-line"></span>
+        </div>
+
+        <div class="qual-item">
+          <span class="qual-icon">✗</span>
+          <p class="qual-text">Quer o procedimento mais barato da cidade</p>
+        </div>
+        <div class="qual-item">
+          <span class="qual-icon">✗</span>
+          <p class="qual-text">Já tem diagnóstico formado pelo TikTok e não está aberta a avaliação</p>
+        </div>
+        <div class="qual-item">
+          <span class="qual-icon">✗</span>
+          <p class="qual-text">Quer resultado no dia seguinte sem entender que rejuvenescimento é processo</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA / FORM
+============================================================ -->
+<section class="cta" id="formulario">
+  <div class="rule"></div>
+
+  <div class="wrap">
+    <div class="cta__inner">
+      <span class="eyebrow sr">O próximo passo é simples</span>
+
+      <h2 class="cta__title sr sr-1">
+        <em>Agende</em> sua<br>avaliação presencial
+      </h2>
+
+      <p class="cta__body sr sr-2">
+        Preencha o formulário abaixo. A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial.<br><br>
+        Sem pressão. Se fizer sentido depois dessa conversa, a gente apresenta o protocolo ideal pra você.
+      </p>
+
+      <form class="form sr sr-3" id="contactForm" novalidate>
+        <div class="form__row">
+          <div class="form__field">
+            <label class="form__label" for="f-name">Nome</label>
+            <input class="form__input" type="text" id="f-name" name="name" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="f-age">Idade</label>
+            <input class="form__input" type="text" id="f-age" name="age" placeholder="Sua idade" required>
+          </div>
+        </div>
+
+        <div class="form__row">
+          <div class="form__field">
+            <label class="form__label" for="f-phone">WhatsApp</label>
+            <input class="form__input" type="tel" id="f-phone" name="phone" placeholder="(00) 00000-0000" required>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="f-city">Cidade</label>
+            <input class="form__input" type="text" id="f-city" name="city" placeholder="Sua cidade" required>
+          </div>
+        </div>
+
+        <div class="form__field">
+          <label class="form__label" for="f-concern">Principal preocupação</label>
+          <select class="form__select" id="f-concern" name="concern" required>
+            <option value="" disabled selected>Selecione sua principal queixa</option>
+            <option value="manchas">Manchas e melasma</option>
+            <option value="flacidez">Flacidez e perda de contorno</option>
+            <option value="rugas">Rugas e linhas de expressão</option>
+            <option value="olheiras">Olheiras e bolsas</option>
+            <option value="harmonizacao">Harmonização facial</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form__field">
+          <label class="form__label" for="f-history">Já fez algum procedimento antes? <span style="opacity:.4;font-weight:300">(opcional)</span></label>
+          <textarea class="form__textarea" id="f-history" name="history" placeholder="Conte um pouco sobre sua experiência anterior"></textarea>
+        </div>
+
+        <div class="form__footer">
+          <button type="submit" class="btn" id="submitBtn">
+            <span class="btn__inner" id="btnText">Quero agendar minha avaliação</span>
+          </button>
+          <p class="form__note">Vagas limitadas &nbsp;·&nbsp; Retorno em até 24 horas</p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer__brand">Dra. Sandra Müller</p>
+  </div>
+</footer>
+
+
+<script>
+  /* -----------------------------------------------------------
+     Scroll reveal
+  ----------------------------------------------------------- */
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+  document.querySelectorAll('.sr').forEach(el => io.observe(el));
+
+  /* -----------------------------------------------------------
+     Phone mask
+  ----------------------------------------------------------- */
+  document.getElementById('f-phone').addEventListener('input', function () {
+    let v = this.value.replace(/\D/g, '').slice(0, 11);
+    if (v.length === 0)       this.value = '';
+    else if (v.length <= 2)   this.value = '(' + v;
+    else if (v.length <= 7)   this.value = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    else                      this.value = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+  });
+
+  /* -----------------------------------------------------------
+     Form submit — redirects to WhatsApp with pre-filled message
+     Replace WHATSAPP_NUMBER with the actual number (digits only)
+  ----------------------------------------------------------- */
+  const WHATSAPP_NUMBER = 'WHATSAPP_NUMBER'; // ← substitua pelo número da Dra. (ex: 5511999999999)
+
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name    = document.getElementById('f-name').value.trim();
+    const age     = document.getElementById('f-age').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const city    = document.getElementById('f-city').value.trim();
+    const concern = document.getElementById('f-concern').value;
+    const history = document.getElementById('f-history').value.trim();
+
+    if (!name || !age || !phone || !city || !concern) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    const msg = encodeURIComponent(
+      `Olá! Vim pela landing page e gostaria de agendar minha avaliação.\n\n` +
+      `*Nome:* ${name}\n` +
+      `*Idade:* ${age}\n` +
+      `*WhatsApp:* ${phone}\n` +
+      `*Cidade:* ${city}\n` +
+      `*Principal queixa:* ${concern}\n` +
+      (history ? `*Histórico:* ${history}` : '')
+    );
+
+    const btn     = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    btnText.textContent = 'Redirecionando...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+      btnText.textContent = 'Mensagem enviada ✓';
+      btn.style.pointerEvents = 'none';
+    }, 600);
+  });
+</script>
+
+</body>
+</html>
