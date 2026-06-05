@@ -128,6 +128,36 @@
       position: relative;
       z-index: 1;
       padding: 130px 0 110px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .hero__inner { grid-template-columns: 1fr; gap: 56px; padding-bottom: 0; }
+    }
+
+    .hero__photo {
+      position: relative;
+    }
+    .hero__photo img {
+      width: 100%;
+      height: 100%;
+      max-height: 620px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      border: 1px solid var(--gold-line);
+    }
+    .hero__photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(240,232,220,0.18) 100%);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .hero__photo img { max-height: 440px; }
     }
 
     .hero__pre {
@@ -588,24 +618,9 @@
     }
     .qual > .gold-rule--full { position: absolute; top: 0; left: 0; right: 0; }
 
-    .qual__intro {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 64px;
-      align-items: center;
+    .qual__hd {
       margin-bottom: 72px;
     }
-    @media (max-width: 768px) {
-      .qual__intro { grid-template-columns: 1fr; gap: 36px; }
-    }
-
-    .qual__photo img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border: 1px solid var(--gold-line);
-    }
-
     .qual__hd .eyebrow { margin-bottom: 22px; }
     .qual__title {
       font-family: var(--ff-d);
@@ -822,17 +837,23 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__inner">
-      <h1 class="hero__h1">
-        Até <strong>20 anos</strong> de<br>rejuvenescimento
-      </h1>
+      <div class="hero__text">
+        <h1 class="hero__h1">
+          Até <strong>20 anos</strong> de<br>rejuvenescimento
+        </h1>
 
-      <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
+        <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
 
-      <div class="hero__sep"></div>
+        <div class="hero__sep"></div>
 
-      <p class="hero__body">
-        Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
-      </p>
+        <p class="hero__body">
+          Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
+        </p>
+      </div>
+
+      <div class="hero__photo">
+        <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller">
+      </div>
     </div>
   </div>
   <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
@@ -1039,14 +1060,9 @@
 <section class="qual">
   <div class="gold-rule--full"></div>
   <div class="wrap">
-    <div class="qual__intro sr">
-      <div class="qual__photo">
-        <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller">
-      </div>
-      <div class="qual__hd">
-        <span class="eyebrow">Critérios de atendimento</span>
-        <h2 class="qual__title">Para quem é <strong>a Dra. Sandra</strong></h2>
-      </div>
+    <div class="qual__hd sr">
+      <span class="eyebrow">Critérios de atendimento</span>
+      <h2 class="qual__title">Para quem é <strong>a Dra. Sandra</strong></h2>
     </div>
 
     <div class="qual__grid sr d2">
