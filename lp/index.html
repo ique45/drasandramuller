@@ -128,7 +128,34 @@
       position: relative;
       z-index: 1;
       padding: 130px 0 110px;
+      max-width: 58%;
     }
+    @media (max-width: 900px) { .hero__inner { max-width: 100%; } }
+
+    .hero__bg-photo {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 44%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero__bg-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, rgba(240,232,220,0.55) 28%, transparent 65%);
+      z-index: 1;
+    }
+    .hero__bg-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      opacity: 0.9;
+    }
+    @media (max-width: 900px) { .hero__bg-photo { display: none; } }
 
     .hero__pre {
       display: flex;
@@ -709,12 +736,25 @@
     .cta__inner {
       position: relative;
       z-index: 1;
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 88px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .cta__inner { grid-template-columns: 1fr; gap: 48px; }
+      .cta__photo { display: none; }
     }
 
-    .cta__inner .eyebrow { margin-bottom: 22px; }
+    .cta__photo img {
+      width: 100%;
+      display: block;
+      border: 1px solid rgba(201,146,26,0.3);
+    }
+
+    .cta__content { text-align: left; }
+    .cta__content .eyebrow { margin-bottom: 22px; }
+    .cta__action { text-align: left; }
 
     .cta__title {
       font-family: var(--ff-d);
@@ -738,7 +778,6 @@
       margin-bottom: 64px;
     }
 
-    .cta__action { text-align: center; }
 
     .btn {
       display: inline-block;
@@ -838,6 +877,9 @@
         Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
       </p>
     </div>
+  </div>
+  <div class="hero__bg-photo" aria-hidden="true">
+    <img src="../img/Foto%20draSandra2.jpg" alt="">
   </div>
   <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
 </section>
@@ -1111,20 +1153,26 @@
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="cta__inner">
-      <h2 class="cta__title sr d1">
-        O próximo passo<br><strong>é simples.</strong>
-      </h2>
+      <div class="cta__content">
+        <h2 class="cta__title sr d1">
+          O próximo passo<br><strong>é simples.</strong>
+        </h2>
 
-      <p class="cta__body sr d2">
-        A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial com a Dra. Sandra.<br><br>
-        Sem pressão. Se fizer sentido depois dessa conversa, a gente apresenta o protocolo ideal pra você.
-      </p>
+        <p class="cta__body sr d2">
+          A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial com a Dra. Sandra.<br><br>
+          Sem pressão. Se fizer sentido depois dessa conversa, a gente apresenta o protocolo ideal pra você.
+        </p>
 
-      <div class="cta__action sr d3">
-        <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
-          <span class="btn__face">Quero agendar minha avaliação</span>
-        </a>
-        <p class="cta__note">Vagas limitadas.</p>
+        <div class="cta__action sr d3">
+          <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+            <span class="btn__face">Quero agendar minha avaliação</span>
+          </a>
+          <p class="cta__note">Vagas limitadas.</p>
+        </div>
+      </div>
+
+      <div class="cta__photo sr d2">
+        <img src="../img/Foto%20draSandra3.jpg" alt="Dra. Sandra Müller">
       </div>
     </div>
   </div>
