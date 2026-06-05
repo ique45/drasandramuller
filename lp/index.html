@@ -514,6 +514,67 @@
     }
 
     /* =========================================================
+       RESULTS — antes e depois
+    ========================================================= */
+    .results {
+      padding: 140px 0;
+      background: var(--cream);
+      position: relative;
+    }
+    .results > .gold-rule--full { position: absolute; top: 0; left: 0; right: 0; }
+
+    .results__hd {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .results__title {
+      font-family: var(--ff-d);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .results__title strong {
+      font-weight: 600;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .results__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .result-card {
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-card__img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--gold-line);
+    }
+    .result-card__labels {
+      display: flex;
+      margin-top: 12px;
+    }
+    .result-card__label {
+      flex: 1;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .result-card__label--after { color: var(--gold); }
+
+    /* =========================================================
        QUALIFICATION
     ========================================================= */
     .qual {
@@ -925,6 +986,29 @@
         <h3 class="pillar__title">Resultado e Liberdade</h3>
         <p class="pillar__body">A Dra. Sandra entrega o resultado em poucas sessões e libera você. Sem pacote interminável. Sem dependência. Sem te prender na clínica pra continuar faturando.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RESULTS — antes e depois
+============================================================ -->
+<section class="results">
+  <div class="gold-rule--full"></div>
+  <div class="wrap">
+    <div class="results__hd sr">
+      <h2 class="results__title">Conheça algumas de <strong>nossas clientes</strong></h2>
+    </div>
+
+    <div class="results__grid sr d2">
+      <figure class="result-card">
+        <img src="../img/antes%20e%20depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img">
+        <div class="result-card__labels">
+          <span class="result-card__label">Antes</span>
+          <span class="result-card__label result-card__label--after">Depois</span>
+        </div>
+      </figure>
     </div>
   </div>
 </section>
