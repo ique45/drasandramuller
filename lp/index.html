@@ -746,6 +746,17 @@
       .cta__photo { display: none; }
     }
 
+    .cta__photo {
+      position: relative;
+    }
+    .cta__photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #2E2620 0%, rgba(46,38,32,0.5) 30%, transparent 65%);
+      z-index: 1;
+      pointer-events: none;
+    }
     .cta__photo img {
       width: 100%;
       display: block;
