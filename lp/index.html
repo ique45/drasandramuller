@@ -204,6 +204,18 @@
       animation: fadeUp 1s var(--ease) forwards 0.48s;
     }
 
+    .hero__intro {
+      max-width: 500px;
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 350;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--body);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease) forwards 0.2s;
+    }
+
     .hero__sep {
       width: 0;
       height: 1px;
@@ -884,23 +896,77 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__inner">
+      <p class="hero__intro">
+        Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
+      </p>
+
       <h1 class="hero__h1">
         Até <strong>20 anos</strong> de rejuvenescimento
       </h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
-
-      <div class="hero__sep"></div>
-
-      <p class="hero__body">
-        Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
-      </p>
     </div>
   </div>
   <div class="hero__bg-photo" aria-hidden="true">
     <img src="../img/Foto%20draSandra2.jpg" alt="">
   </div>
   <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
+</section>
+
+
+<!-- ============================================================
+     RESULTS — antes e depois
+============================================================ -->
+<section class="results">
+  <div class="gold-rule--full"></div>
+  <div class="wrap">
+    <div class="results__hd sr">
+      <h2 class="results__title">Conheça algumas de <strong>nossas clientes</strong></h2>
+    </div>
+
+    <div class="results__grid sr d2">
+      <figure class="result-card">
+        <img src="../img/antes%20e%20depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img">
+        <div class="result-card__labels">
+          <span class="result-card__label">Antes</span>
+          <span class="result-card__label result-card__label--after">Depois</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA intermediário (após resultados)
+============================================================ -->
+<section class="cta">
+  <div class="gold-rule--full"></div>
+  <div class="wrap">
+    <div class="cta__inner">
+      <div class="cta__content">
+        <h2 class="cta__title sr d1">
+          O próximo passo<br><strong>é simples.</strong>
+        </h2>
+
+        <p class="cta__body sr d2">
+          A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial com a Dra. Sandra.<br><br>
+          Sem pressão. Se fizer sentido depois dessa conversa, a gente apresenta o protocolo ideal pra você.
+        </p>
+
+        <div class="cta__action sr d3">
+          <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+            <span class="btn__face">Quero agendar minha avaliação</span>
+          </a>
+          <p class="cta__note">Vagas limitadas.</p>
+        </div>
+      </div>
+
+      <div class="cta__photo sr d2">
+        <img src="../img/Foto%20draSandra3.jpg" alt="Dra. Sandra Müller">
+      </div>
+    </div>
+  </div>
 </section>
 
 
@@ -1070,29 +1136,6 @@
         <h3 class="pillar__title">Resultado e Liberdade</h3>
         <p class="pillar__body">A Dra. Sandra entrega o resultado em poucas sessões e libera você. Sem pacote interminável. Sem dependência. Sem te prender na clínica pra continuar faturando.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     RESULTS — antes e depois
-============================================================ -->
-<section class="results">
-  <div class="gold-rule--full"></div>
-  <div class="wrap">
-    <div class="results__hd sr">
-      <h2 class="results__title">Conheça algumas de <strong>nossas clientes</strong></h2>
-    </div>
-
-    <div class="results__grid sr d2">
-      <figure class="result-card">
-        <img src="../img/antes%20e%20depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img">
-        <div class="result-card__labels">
-          <span class="result-card__label">Antes</span>
-          <span class="result-card__label result-card__label--after">Depois</span>
-        </div>
-      </figure>
     </div>
   </div>
 </section>
