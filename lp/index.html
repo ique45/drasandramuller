@@ -588,9 +588,24 @@
     }
     .qual > .gold-rule--full { position: absolute; top: 0; left: 0; right: 0; }
 
-    .qual__hd {
+    .qual__intro {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 64px;
+      align-items: center;
       margin-bottom: 72px;
     }
+    @media (max-width: 768px) {
+      .qual__intro { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    .qual__photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid var(--gold-line);
+    }
+
     .qual__hd .eyebrow { margin-bottom: 22px; }
     .qual__title {
       font-family: var(--ff-d);
@@ -1024,9 +1039,14 @@
 <section class="qual">
   <div class="gold-rule--full"></div>
   <div class="wrap">
-    <div class="qual__hd sr">
-      <span class="eyebrow">Critérios de atendimento</span>
-      <h2 class="qual__title">Para quem é <strong>a Dra. Sandra</strong></h2>
+    <div class="qual__intro sr">
+      <div class="qual__photo">
+        <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller">
+      </div>
+      <div class="qual__hd">
+        <span class="eyebrow">Critérios de atendimento</span>
+        <h2 class="qual__title">Para quem é <strong>a Dra. Sandra</strong></h2>
+      </div>
     </div>
 
     <div class="qual__grid sr d2">
