@@ -654,58 +654,7 @@
       margin-bottom: 64px;
     }
 
-    /* Form */
-    .form { text-align: left; }
-
-    .form__row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-    @media (max-width: 580px) { .form__row { grid-template-columns: 1fr; } }
-
-    .form__field { margin-bottom: 14px; }
-
-    .form__label {
-      display: block;
-      font-size: 9.5px;
-      font-weight: 600;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    .form__input,
-    .form__select,
-    .form__textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(201,146,26,0.22);
-      color: #fff;
-      font-family: var(--ff-b);
-      font-size: 15px;
-      font-weight: 350;
-      padding: 14px 18px;
-      outline: none;
-      transition: border-color 0.3s ease, background 0.3s ease;
-      -webkit-appearance: none;
-      border-radius: 0;
-    }
-    .form__input:focus,
-    .form__select:focus,
-    .form__textarea:focus {
-      border-color: rgba(201,146,26,0.6);
-      background: rgba(255,255,255,0.07);
-    }
-    .form__input::placeholder,
-    .form__textarea::placeholder { color: rgba(255,255,255,0.2); font-weight: 300; }
-    .form__select { cursor: pointer; }
-    .form__select option { background: #1a1714; color: #fff; }
-    .form__textarea { resize: vertical; min-height: 96px; }
-
-    .form__footer { text-align: center; margin-top: 44px; }
+    .cta__action { text-align: center; }
 
     .btn {
       display: inline-block;
@@ -741,7 +690,7 @@
     .btn:hover .btn__face { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,146,26,0.3); }
     .btn:hover::before { opacity: 1; }
 
-    .form__note {
+    .cta__note {
       margin-top: 16px;
       font-size: 11px;
       font-weight: 350;
@@ -1067,61 +1016,16 @@
       </h2>
 
       <p class="cta__body sr d2">
-        Preencha o formulário abaixo. A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial.<br><br>
+        A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial.<br><br>
         Sem pressão. Se fizer sentido depois dessa conversa, a gente apresenta o protocolo ideal pra você.
       </p>
 
-      <form class="form sr d3" id="contactForm" novalidate>
-        <div class="form__row">
-          <div class="form__field">
-            <label class="form__label" for="f-name">Nome</label>
-            <input class="form__input" type="text" id="f-name" name="name" placeholder="Seu nome completo" required>
-          </div>
-          <div class="form__field">
-            <label class="form__label" for="f-age">Idade</label>
-            <input class="form__input" type="text" id="f-age" name="age" placeholder="Sua idade" required>
-          </div>
-        </div>
-
-        <div class="form__row">
-          <div class="form__field">
-            <label class="form__label" for="f-phone">WhatsApp</label>
-            <input class="form__input" type="tel" id="f-phone" name="phone" placeholder="(00) 00000-0000" required>
-          </div>
-          <div class="form__field">
-            <label class="form__label" for="f-city">Cidade</label>
-            <input class="form__input" type="text" id="f-city" name="city" placeholder="Sua cidade" required>
-          </div>
-        </div>
-
-        <div class="form__field">
-          <label class="form__label" for="f-concern">Principal preocupação</label>
-          <select class="form__select" id="f-concern" name="concern" required>
-            <option value="" disabled selected>Selecione sua principal queixa</option>
-            <option value="manchas">Manchas e melasma</option>
-            <option value="flacidez">Flacidez e perda de contorno</option>
-            <option value="rugas">Rugas e linhas de expressão</option>
-            <option value="olheiras">Olheiras e bolsas</option>
-            <option value="harmonizacao">Harmonização facial</option>
-            <option value="outro">Outro</option>
-          </select>
-        </div>
-
-        <div class="form__field">
-          <label class="form__label" for="f-history">
-            Já fez algum procedimento antes?
-            <span style="opacity:.4;font-weight:300;letter-spacing:0"> (opcional)</span>
-          </label>
-          <textarea class="form__textarea" id="f-history" name="history" placeholder="Conte um pouco sobre sua experiência anterior"></textarea>
-        </div>
-
-        <div class="form__footer">
-          <button type="submit" class="btn" id="submitBtn">
-            <span class="btn__face" id="btnText">Quero agendar minha avaliação</span>
-          </button>
-          <p class="form__note">Vagas limitadas &nbsp;·&nbsp; Retorno em até 24 horas</p>
-        </div>
-      </form>
+      <div class="cta__action sr d3">
+        <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+          <span class="btn__face">Quero agendar minha avaliação</span>
+        </a>
+        <p class="cta__note">Vagas limitadas &nbsp;·&nbsp; Retorno em até 24 horas</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1147,50 +1051,6 @@
   );
   document.querySelectorAll('.sr').forEach(el => io.observe(el));
 
-  /* Phone mask */
-  document.getElementById('f-phone').addEventListener('input', function () {
-    let v = this.value.replace(/\D/g, '').slice(0, 11);
-    if      (v.length === 0) this.value = '';
-    else if (v.length <= 2)  this.value = '(' + v;
-    else if (v.length <= 7)  this.value = '(' + v.slice(0,2) + ') ' + v.slice(2);
-    else                     this.value = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-  });
-
-  /* Form submit → WhatsApp */
-  const WHATSAPP_NUMBER = 'WHATSAPP_NUMBER'; // ← substitua pelo número (ex: 5511999999999)
-
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const name    = document.getElementById('f-name').value.trim();
-    const age     = document.getElementById('f-age').value.trim();
-    const phone   = document.getElementById('f-phone').value.trim();
-    const city    = document.getElementById('f-city').value.trim();
-    const concern = document.getElementById('f-concern').value;
-    const history = document.getElementById('f-history').value.trim();
-
-    if (!name || !age || !phone || !city || !concern) {
-      alert('Por favor, preencha todos os campos obrigatórios.');
-      return;
-    }
-
-    const msg = encodeURIComponent(
-      `Olá! Vim pela landing page e gostaria de agendar minha avaliação.\n\n` +
-      `*Nome:* ${name}\n*Idade:* ${age}\n*WhatsApp:* ${phone}\n*Cidade:* ${city}\n*Principal queixa:* ${concern}` +
-      (history ? `\n*Histórico:* ${history}` : '')
-    );
-
-    const btn  = document.getElementById('submitBtn');
-    const face = document.getElementById('btnText');
-    face.textContent = 'Redirecionando...';
-    btn.disabled = true;
-
-    setTimeout(() => {
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
-      face.textContent = 'Mensagem enviada ✓';
-      btn.style.pointerEvents = 'none';
-    }, 600);
-  });
 </script>
 
 </body>
