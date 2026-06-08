@@ -133,6 +133,20 @@
     }
     @media (max-width: 900px) { .hero__inner { max-width: 100%; } }
 
+    .hero__mobile-photo { display: none; }
+    @media (max-width: 900px) {
+      .hero__mobile-photo {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 56px;
+      }
+      .hero__mobile-photo img {
+        width: 220px;
+        height: auto;
+        display: block;
+      }
+    }
+
     .hero__bg-photo {
       position: absolute;
       right: 0; top: 0; bottom: 0;
@@ -1000,6 +1014,9 @@
       </h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
+    </div>
+    <div class="hero__mobile-photo" aria-hidden="true">
+      <img src="../img/drsandramuller.png" alt="" loading="lazy">
     </div>
   </div>
   <div class="hero__bg-photo" aria-hidden="true">
