@@ -145,14 +145,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, var(--cream) 0%, rgba(240,232,220,0.55) 28%, transparent 65%);
+      background: linear-gradient(to right, var(--cream) 0%, color-mix(in srgb, var(--cream) 55%, transparent) 28%, transparent 65%);
       z-index: 1;
     }
     .hero__bg-photo::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, var(--cream) 0%, rgba(240,232,220,0.45) 30%, transparent 62%);
+      background: linear-gradient(to top, var(--cream) 0%, color-mix(in srgb, var(--cream) 45%, transparent) 30%, transparent 62%);
       z-index: 2;
       pointer-events: none;
     }
@@ -214,7 +214,7 @@
       color: var(--body);
       margin-bottom: 56px;
       opacity: 0;
-      animation: fadeUp 0.7s var(--ease) forwards 0.2s;
+      animation: fadeUp 0.7s var(--ease) forwards 0.4s;
     }
 
     .hero__sep {
@@ -769,6 +769,7 @@
 
     .cta__photo {
       position: relative;
+      aspect-ratio: 3 / 4;
     }
     .cta__photo::before {
       content: '';
@@ -941,7 +942,7 @@
 <!-- ============================================================
      CTA intermediário (após resultados)
 ============================================================ -->
-<section class="cta">
+<section class="cta" aria-label="Agendamento">
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="cta__inner">
@@ -1151,9 +1152,9 @@
     <div class="qual__hd sr">
       <span class="eyebrow">Critérios de atendimento</span>
       <h2 class="qual__title">Para quem é <strong>a Dra. Sandra</strong></h2>
-      <div class="qual__portrait">
-        <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller">
-      </div>
+    </div>
+    <div class="qual__portrait sr d2">
+      <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller">
     </div>
 
     <div class="qual__grid sr d2">
@@ -1212,7 +1213,7 @@
 <!-- ============================================================
      CTA / FORM — única seção escura
 ============================================================ -->
-<section class="cta" id="formulario">
+<section class="cta" id="formulario" aria-label="Formulário de contato">
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="cta__inner">
