@@ -138,8 +138,8 @@
       .hero__mobile-photo {
         display: flex;
         justify-content: center;
-        padding-top: 56px;
-        padding-bottom: 40px;
+        padding-top: 52px;
+        padding-bottom: 32px;
       }
       .hero__mobile-photo img {
         width: 155px;
@@ -966,6 +966,23 @@
       .frustration__left { position: static; }
     }
 
+    /* Hero mobile: foto acima, texto centralizado */
+    @media (max-width: 900px) {
+      .hero__inner {
+        padding: 0 0 60px;
+        text-align: center;
+      }
+      .hero__intro {
+        max-width: 100%;
+        font-size: 12px;
+        margin-bottom: 36px;
+      }
+      .hero__sub { margin-left: 0; }
+
+      /* Remove quebras de linha forçadas nos títulos */
+      h1 br, h2 br, h3 br { display: none; }
+    }
+
     @media (max-width: 768px) {
       /* Seções: reduz padding vertical */
       .frustration,
@@ -974,9 +991,6 @@
       .pillars,
       .qual,
       .cta { padding: 80px 0; }
-
-      /* Hero: reduz padding */
-      .hero__inner { padding: 72px 0 56px; }
 
       /* Entry CTA: adiciona margem lateral (está fora do .wrap) */
       .frustration__entry-cta { padding: 16px 24px 48px; }
@@ -1099,7 +1113,7 @@
 
     <div class="results__grid sr d2">
       <figure class="result-card">
-        <img src="../img/antes%20e%20depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img" loading="lazy" width="160" height="160">
+        <img src="../img/antes-e-depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img" loading="lazy" width="160" height="160">
         <div class="result-card__labels">
           <span class="result-card__label">Antes</span>
           <span class="result-card__label result-card__label--after">Depois</span>
