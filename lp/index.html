@@ -629,6 +629,16 @@
       font-size: 13px;
       letter-spacing: 0.24em;
     }
+    .results__hd .eyebrow { margin-bottom: 22px; }
+    .results__note {
+      max-width: 560px;
+      margin: 24px auto 0;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 350;
+      font-style: italic;
+      color: var(--muted);
+    }
 
     /* =========================================================
        QUALIFICATION
@@ -914,7 +924,7 @@
   <div class="wrap">
     <div class="hero__inner">
       <p class="hero__intro">
-        Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometeu.
+        Para mulheres acima de 35 anos que já tentaram procedimentos, já gastaram com promessas e chegaram até aqui porque ainda não encontraram quem entregasse o que prometia.
       </p>
 
       <h1 class="hero__h1">
@@ -928,29 +938,6 @@
     <img src="../img/Design%20sem%20nome.png" alt="" fetchpriority="high">
   </div>
   <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
-</section>
-
-
-<!-- ============================================================
-     RESULTS — antes e depois
-============================================================ -->
-<section class="results">
-  <div class="gold-rule--full"></div>
-  <div class="wrap">
-    <div class="results__hd sr">
-      <h2 class="results__title">Conheça o resultado de <strong>uma das nossas clientes</strong></h2>
-    </div>
-
-    <div class="results__grid sr d2">
-      <figure class="result-card">
-        <img src="../img/antes%20e%20depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img" loading="lazy">
-        <div class="result-card__labels">
-          <span class="result-card__label">Antes</span>
-          <span class="result-card__label result-card__label--after">Depois</span>
-        </div>
-      </figure>
-    </div>
-  </div>
 </section>
 
 
@@ -999,6 +986,31 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     RESULTS — antes e depois
+============================================================ -->
+<section class="results">
+  <div class="gold-rule--full"></div>
+  <div class="wrap">
+    <div class="results__hd sr">
+      <span class="eyebrow">Resultado documentado</span>
+      <h2 class="results__title">E quando o protocolo é certo,<br><strong>o rosto mostra.</strong></h2>
+    </div>
+
+    <div class="results__grid sr d2">
+      <figure class="result-card">
+        <img src="../img/antes%20e%20depois.jpeg" alt="Resultado de cliente — antes e depois" class="result-card__img" loading="lazy" width="160" height="160">
+        <div class="result-card__labels">
+          <span class="result-card__label">Antes</span>
+          <span class="result-card__label result-card__label--after">Depois</span>
+        </div>
+      </figure>
+    </div>
+    <p class="results__note sr d3">Paciente real. Protocolo personalizado com os 4 pilares. Sem cirurgia, sem preenchimento excessivo, sem procedimentos agressivos.</p>
   </div>
 </section>
 
@@ -1078,39 +1090,6 @@
 
 
 <!-- ============================================================
-     CTA intermediário (após comparação)
-============================================================ -->
-<section class="cta" aria-label="Agendamento">
-  <div class="gold-rule--full"></div>
-  <div class="wrap">
-    <div class="cta__inner">
-      <div class="cta__content">
-        <h2 class="cta__title sr d1">
-          O próximo passo<br><strong>é simples.</strong>
-        </h2>
-
-        <p class="cta__body sr d2">
-          A nossa equipe vai analisar o seu caso e entrar em contato para agendar a sua avaliação presencial com a Dra. Sandra.<br><br>
-          Sem pressão. Se fizer sentido depois dessa conversa, a gente apresenta o protocolo ideal pra você.
-        </p>
-
-        <div class="cta__action sr d3">
-          <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
-            <span class="btn__face">Quero agendar minha avaliação</span>
-          </a>
-          <p class="cta__note">Vagas limitadas.</p>
-        </div>
-      </div>
-
-      <div class="cta__photo sr d2">
-        <img src="../img/Foto%20draSandra3.jpg" alt="Dra. Sandra Müller" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
      PILLARS
 ============================================================ -->
 <section class="pillars">
@@ -1122,7 +1101,7 @@
         Transformação real em semanas,<br>
         <strong>não em anos de dependência.</strong>
       </h2>
-      <p class="pillars__sub">Não é uma promessa vaga. É um método construído em cima de quatro pilares que atuam ao mesmo tempo no seu caso.</p>
+      <p class="pillars__sub">Não é uma promessa vaga. É um método construído sobre quatro pilares que atuam ao mesmo tempo no seu caso.</p>
     </div>
 
     <div class="pillars__grid sr d2">
@@ -1159,6 +1138,38 @@
 
 
 <!-- ============================================================
+     CTA intermediário (após pilares)
+============================================================ -->
+<section class="cta" aria-label="Agendamento">
+  <div class="gold-rule--full"></div>
+  <div class="wrap">
+    <div class="cta__inner">
+      <div class="cta__content">
+        <h2 class="cta__title sr d1">
+          Entendeu o método.<br><strong>Agora descubra o seu protocolo.</strong>
+        </h2>
+
+        <p class="cta__body sr d2">
+          A Dra. Sandra avalia cada caso antes de recomendar qualquer procedimento. Manda uma mensagem — sem pressão, sem compromisso.
+        </p>
+
+        <div class="cta__action sr d3">
+          <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+            <span class="btn__face">Quero saber o que é certo pra mim</span>
+          </a>
+          <p class="cta__note">Vagas limitadas.</p>
+        </div>
+      </div>
+
+      <div class="cta__photo sr d2">
+        <img src="../img/Foto%20draSandra3.jpg" alt="Dra. Sandra Müller" loading="lazy" width="107" height="160">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      QUALIFICATION
 ============================================================ -->
 <section class="qual">
@@ -1169,7 +1180,7 @@
       <h2 class="qual__title">Para quem é <strong>a Dra. Sandra</strong></h2>
     </div>
     <div class="qual__portrait sr d1">
-      <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller" loading="lazy">
+      <img src="../img/drsandramuller.png" alt="Dra. Sandra Müller" loading="lazy" width="472" height="750">
     </div>
 
     <div class="qual__grid sr d2">
@@ -1193,7 +1204,7 @@
         </div>
         <div class="qual-item">
           <span class="qual-mark">✓</span>
-          <p class="qual-text">Sabe que barato demais cobra com o rosto — e não quer mais pagar esse preço</p>
+          <p class="qual-text">Sabe que barato demais sai caro pro rosto — e não quer mais pagar esse preço</p>
         </div>
         <div class="qual-item">
           <span class="qual-mark">✓</span>
@@ -1228,7 +1239,7 @@
 <!-- ============================================================
      CTA / FORM — única seção escura
 ============================================================ -->
-<section class="cta" id="formulario" aria-label="Formulário de contato">
+<section class="cta" id="formulario" aria-label="Agendamento">
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="cta__inner">
@@ -1251,7 +1262,7 @@
       </div>
 
       <div class="cta__photo sr d2">
-        <img src="../img/Foto%20draSandra3.jpg" alt="Dra. Sandra Müller" loading="lazy">
+        <img src="../img/Foto%20draSandra3.jpg" alt="Dra. Sandra Müller" loading="lazy" width="107" height="160">
       </div>
     </div>
   </div>
@@ -1275,7 +1286,7 @@
       entries => entries.forEach(e => {
         if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
       }),
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.15 }
     );
     document.querySelectorAll('.sr').forEach(el => io.observe(el));
   } else {
