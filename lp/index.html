@@ -101,14 +101,33 @@
     .sr.in { opacity: 1; transform: none; }
 
     /* =========================================================
-       HERO
+       HERO + HERO TRACK — sticky com wipe de cima pra baixo
     ========================================================= */
+    .hero-track {
+      position: relative;
+      height: 200svh;
+    }
+
+    .hero__curtain {
+      position: absolute;
+      inset: 0;
+      background: var(--cream-2);
+      transform: translateY(-100%);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero__curtain { display: none; }
+    }
+
     .hero {
       min-height: 100svh;
       display: flex;
       align-items: center;
       background: var(--cream);
-      position: relative;
+      position: sticky;
+      top: 0;
       overflow: hidden;
     }
 
@@ -254,6 +273,19 @@
       user-select: none;
     }
     @media (max-width: 900px) { .hero__aside { display: none; } }
+
+    .hero__cta-bar {
+      position: absolute;
+      bottom: 52px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease) forwards 1.3s;
+    }
+    @media (max-width: 768px) { .hero__cta-bar { bottom: 36px; } }
 
     /* =========================================================
        COMPARISON — cream, two columns distinguished
@@ -908,7 +940,7 @@
     @media (prefers-reduced-motion: reduce) {
       .sr { opacity: 1; transform: none; transition: none; }
       .hero__pre, .hero__h1, .hero__sub, .hero__intro,
-      .hero__sep, .hero__body, .hero__aside {
+      .hero__sep, .hero__body, .hero__aside, .hero__cta-bar {
         opacity: 1; animation: none;
       }
       .hero__sep { width: 52px; }
@@ -920,6 +952,7 @@
 <!-- ============================================================
      HERO
 ============================================================ -->
+<div class="hero-track">
 <section class="hero">
   <div class="wrap">
     <div class="hero__inner">
@@ -938,7 +971,14 @@
     <img src="../img/Design%20sem%20nome.png" alt="" fetchpriority="high">
   </div>
   <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
+  <div class="hero__cta-bar">
+    <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+      <span class="btn__face">Quero agendar minha avaliação</span>
+    </a>
+  </div>
+  <div class="hero__curtain" aria-hidden="true"></div>
 </section>
+</div>
 
 
 <!-- ============================================================
@@ -1280,6 +1320,19 @@
 
 
 <script>
+  /* Hero screen wipe — curtain slides top → bottom while hero is sticky */
+  (function () {
+    var curtain = document.querySelector('.hero__curtain');
+    if (!curtain || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var vh = window.innerHeight;
+    var onScroll = function () {
+      var progress = Math.min(window.scrollY / vh, 1);
+      curtain.style.transform = 'translateY(' + ((progress - 1) * 100) + '%)';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
   /* Scroll reveal */
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver(
