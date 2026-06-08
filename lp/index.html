@@ -101,33 +101,14 @@
     .sr.in { opacity: 1; transform: none; }
 
     /* =========================================================
-       HERO + HERO TRACK — sticky com wipe de cima pra baixo
+       HERO
     ========================================================= */
-    .hero-track {
-      position: relative;
-      height: 200svh;
-    }
-
-    .hero__curtain {
-      position: absolute;
-      inset: 0;
-      background: var(--cream-2);
-      transform: translateY(-100%);
-      pointer-events: none;
-      z-index: 20;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero__curtain { display: none; }
-    }
-
     .hero {
       min-height: 100svh;
       display: flex;
       align-items: center;
       background: var(--cream);
-      position: sticky;
-      top: 0;
+      position: relative;
       overflow: hidden;
     }
 
@@ -387,6 +368,22 @@
       padding: 140px 0;
       background: var(--cream-2);
       position: relative;
+    }
+    .frustration::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100%;
+      background: var(--cream);
+      pointer-events: none;
+      z-index: 5;
+      transition: height 1.1s var(--ease);
+    }
+    .frustration.wipe-in::after {
+      height: 0%;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .frustration::after { display: none; }
     }
     .frustration > .gold-rule--full { position: absolute; top: 0; left: 0; right: 0; }
 
@@ -952,7 +949,6 @@
 <!-- ============================================================
      HERO
 ============================================================ -->
-<div class="hero-track">
 <section class="hero">
   <div class="wrap">
     <div class="hero__inner">
@@ -976,9 +972,7 @@
       <span class="btn__face">Quero agendar minha avaliação</span>
     </a>
   </div>
-  <div class="hero__curtain" aria-hidden="true"></div>
 </section>
-</div>
 
 
 <!-- ============================================================
@@ -1320,17 +1314,15 @@
 
 
 <script>
-  /* Hero screen wipe — curtain slides top → bottom while hero is sticky */
+  /* Frustration section — wipe in from top to bottom on first scroll */
   (function () {
-    var curtain = document.querySelector('.hero__curtain');
-    if (!curtain || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var vh = window.innerHeight;
-    var onScroll = function () {
-      var progress = Math.min(window.scrollY / vh, 1);
-      curtain.style.transform = 'translateY(' + ((progress - 1) * 100) + '%)';
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var el = document.querySelector('.frustration');
+    if (!el) return;
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { el.classList.add('wipe-in'); obs.disconnect(); }
+    }, { threshold: 0.04 });
+    obs.observe(el);
   })();
 
   /* Scroll reveal */
