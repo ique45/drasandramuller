@@ -966,18 +966,24 @@
       .frustration__left { position: static; }
     }
 
-    /* Hero mobile: foto acima, texto centralizado */
+    /* CTA exclusivo do hero mobile */
+    .hero__mobile-cta { display: none; }
+
+    /* Hero mobile: foto acima, headline → sub → cta */
     @media (max-width: 900px) {
       .hero__inner {
         padding: 0 0 60px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
       }
-      .hero__intro {
-        max-width: 100%;
-        font-size: 12px;
-        margin-bottom: 36px;
-      }
-      .hero__sub { margin-left: 0; }
+      .hero__intro { display: none; }
+      .hero__h1    { order: 1; margin-bottom: 10px; }
+      .hero__sub   { order: 2; margin-left: 0; margin-bottom: 36px; }
+      .hero__mobile-cta { display: block; order: 3; }
+
+      /* Esconde o CTA da seção de baixo no mobile */
+      .frustration__entry-cta { display: none; }
 
       /* Remove quebras de linha forçadas nos títulos */
       h1 br, h2 br, h3 br { display: none; }
@@ -992,8 +998,7 @@
       .qual,
       .cta { padding: 80px 0; }
 
-      /* Entry CTA: adiciona margem lateral (está fora do .wrap) */
-      .frustration__entry-cta { padding: 16px 24px 48px; }
+      /* Entry CTA oculto no mobile — o botão está no hero */
 
       /* Cards internos: reduz padding lateral */
       .compare__col { padding: 32px 24px 40px; }
@@ -1037,6 +1042,11 @@
       </h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
+      <div class="hero__mobile-cta">
+        <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+          <span class="btn__face">Quero agendar minha avaliação</span>
+        </a>
+      </div>
     </div>
   </div>
   <div class="hero__bg-photo" aria-hidden="true">
