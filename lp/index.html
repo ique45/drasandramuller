@@ -255,11 +255,6 @@
     }
     @media (max-width: 900px) { .hero__aside { display: none; } }
 
-    .hero__cta-bar {
-      margin-top: 52px;
-      opacity: 0;
-      animation: fadeUp 0.8s var(--ease) forwards 1.3s;
-    }
 
     /* =========================================================
        COMPARISON — cream, two columns distinguished
@@ -365,7 +360,7 @@
     .frustration::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 100%;
       background: var(--cream);
       pointer-events: none;
@@ -374,6 +369,12 @@
     }
     .frustration.wipe-in::after {
       height: 0%;
+    }
+
+    .frustration__entry-cta {
+      display: flex;
+      justify-content: center;
+      padding: 72px 0 56px;
     }
     @media (prefers-reduced-motion: reduce) {
       .frustration::after { display: none; }
@@ -930,7 +931,7 @@
     @media (prefers-reduced-motion: reduce) {
       .sr { opacity: 1; transform: none; transition: none; }
       .hero__pre, .hero__h1, .hero__sub, .hero__intro,
-      .hero__sep, .hero__body, .hero__aside, .hero__cta-bar {
+      .hero__sep, .hero__body, .hero__aside {
         opacity: 1; animation: none;
       }
       .hero__sep { width: 52px; }
@@ -954,11 +955,6 @@
       </h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
-      <div class="hero__cta-bar">
-        <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
-          <span class="btn__face">Quero agendar minha avaliação</span>
-        </a>
-      </div>
     </div>
   </div>
   <div class="hero__bg-photo" aria-hidden="true">
@@ -972,6 +968,11 @@
      FRUSTRATION
 ============================================================ -->
 <section class="frustration">
+  <div class="frustration__entry-cta">
+    <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+      <span class="btn__face">Quero agendar minha avaliação</span>
+    </a>
+  </div>
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="frustration__inner">
