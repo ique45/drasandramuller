@@ -256,17 +256,10 @@
     @media (max-width: 900px) { .hero__aside { display: none; } }
 
     .hero__cta-bar {
-      position: absolute;
-      bottom: 52px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      z-index: 2;
+      margin-top: 52px;
       opacity: 0;
       animation: fadeUp 0.8s var(--ease) forwards 1.3s;
     }
-    @media (max-width: 768px) { .hero__cta-bar { bottom: 36px; } }
 
     /* =========================================================
        COMPARISON — cream, two columns distinguished
@@ -961,17 +954,17 @@
       </h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
+      <div class="hero__cta-bar">
+        <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
+          <span class="btn__face">Quero agendar minha avaliação</span>
+        </a>
+      </div>
     </div>
   </div>
   <div class="hero__bg-photo" aria-hidden="true">
     <img src="../img/Design%20sem%20nome.png" alt="" fetchpriority="high">
   </div>
   <span class="hero__aside" aria-hidden="true">Dra. Sandra Müller &nbsp;·&nbsp; Medicina Estética</span>
-  <div class="hero__cta-bar">
-    <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
-      <span class="btn__face">Quero agendar minha avaliação</span>
-    </a>
-  </div>
 </section>
 
 
