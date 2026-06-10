@@ -134,6 +134,7 @@
     @media (max-width: 900px) { .hero__inner { max-width: 100%; } }
 
     .hero__mobile-photo { display: none; }
+    .hero__mobile-cta    { display: none; }
     @media (max-width: 900px) {
       .hero__mobile-photo {
         display: flex;
@@ -966,9 +967,6 @@
       .frustration__left { position: static; }
     }
 
-    /* CTA exclusivo do hero mobile */
-    .hero__mobile-cta { display: none; }
-
     /* Hero mobile: foto acima, headline → sub → cta */
     @media (max-width: 900px) {
       .hero__inner {
@@ -980,13 +978,13 @@
       .hero__h1    { order: 1; margin-bottom: 10px; }
       .hero__sub   { order: 2; margin-left: 0; margin-bottom: 28px; }
       .hero__intro { order: 3; max-width: 100%; font-size: 13px; margin-bottom: 32px; }
-      .hero__mobile-cta { display: block; order: 4; }
+      .hero__mobile-cta { display: block; }
 
       /* Esconde o CTA da seção de baixo no mobile */
       .frustration__entry-cta { display: none; }
 
-      /* Remove quebras de linha forçadas nos títulos */
-      h1 br, h2 br, h3 br { display: none; }
+      /* Remove quebra de linha forçada só no hero */
+      .hero br { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1030,7 +1028,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__mobile-photo" aria-hidden="true">
-      <img src="../img/drsandramuller.png" alt="" loading="lazy">
+      <img src="../img/drsandramuller.png" alt="" fetchpriority="high">
     </div>
     <div class="hero__inner">
       <p class="hero__intro">
