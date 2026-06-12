@@ -7,6 +7,7 @@
   <meta name="description" content="Até 20 anos de rejuvenescimento sem cirurgia. Protocolo personalizado para mulheres acima de 35 anos.">
 
   <link rel="preload" as="image" href="../img/Design%20sem%20nome.png" media="(min-width: 901px)" fetchpriority="high">
+  <link rel="preload" as="image" href="../img/drsandramuller.png" media="(max-width: 900px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400;1,600&family=Jost:wght@100..900&display=swap" rel="stylesheet">
@@ -150,7 +151,7 @@
         object-position: top center;
         display: block;
         border: 2px solid var(--gold);
-        box-shadow: 0 0 0 7px rgba(255,255,255,0.25), 0 0 0 9px rgba(255,255,255,0.5), 0 6px 24px rgba(0,0,0,0.2);
+        box-shadow: 0 0 0 7px var(--cream), 0 0 0 9px var(--gold-line), 0 6px 24px rgba(0,0,0,0.2);
       }
     }
 
@@ -1033,8 +1034,6 @@
       /* Esconde o CTA da seção de baixo no mobile */
       .frustration__entry-cta { display: none; }
 
-      /* Remove quebras de linha forçadas nos títulos no mobile */
-      h1 br, h2 br, h3 br { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1057,6 +1056,7 @@
       .pillars__hd  { margin-bottom: 52px; }
       .compare__hd  { margin-bottom: 48px; }
       .qual__hd     { margin-bottom: 48px; }
+      .qual__portrait { margin-bottom: 16px; }
 
       /* CTA: espaçamento */
       .cta__body { margin-bottom: 40px; }
@@ -1078,7 +1078,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__mobile-photo" aria-hidden="true">
-      <img src="../img/drsandramuller.png" alt="" loading="lazy">
+      <img src="../img/drsandramuller.png" alt="" fetchpriority="high">
     </div>
     <div class="hero__inner">
       <p class="hero__intro">
@@ -1483,12 +1483,16 @@
   (function () {
     var btn = document.querySelector('.whatsapp-float');
     if (!btn) return;
+    var max = document.body.scrollHeight - window.innerHeight;
+    window.addEventListener('resize', function () {
+      max = document.body.scrollHeight - window.innerHeight;
+    }, { passive: true });
     function check() {
-      var max = document.body.scrollHeight - window.innerHeight;
       if (max <= 0) return;
       btn.classList.toggle('visible', window.scrollY / max > 0.18);
     }
     window.addEventListener('scroll', check, { passive: true });
+    check();
   })();
 
 </script>
