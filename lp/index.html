@@ -939,6 +939,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.35);
+      text-align: center;
     }
 
     /* Botão flutuante WhatsApp — mobile only */
@@ -1034,6 +1035,8 @@
       /* Esconde o CTA da seção de baixo no mobile */
       .frustration__entry-cta { display: none; }
 
+      /* Evita "semanas," sozinho na linha — flui naturalmente sem o br */
+      .pillars__title br { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1067,6 +1070,7 @@
       .btn { display: block; max-width: 360px; margin-left: auto; margin-right: auto; }
       .btn__face { padding: 20px 24px; text-align: center; }
       .cta__action { text-align: center; }
+      .footer__address { letter-spacing: 0.06em; }
     }
   </style>
 </head>
@@ -1078,7 +1082,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__mobile-photo" aria-hidden="true">
-      <img src="../img/drsandramuller.png" alt="" fetchpriority="high">
+      <img src="../img/drsandramuller.png" alt="" fetchpriority="high" width="155" height="155">
     </div>
     <div class="hero__inner">
       <p class="hero__intro">
@@ -1443,7 +1447,7 @@
 <footer class="footer">
   <div class="wrap">
     <p class="footer__brand">Dra. Sandra Müller</p>
-    <p class="footer__address">Avenida Pioneiros, 99 &nbsp;·&nbsp; Centro &nbsp;·&nbsp; Indaial</p>
+    <p class="footer__address">Avenida Pioneiros, 99<br>Centro · Indaial</p>
   </div>
 </footer>
 
@@ -1484,9 +1488,9 @@
     var btn = document.querySelector('.whatsapp-float');
     if (!btn) return;
     var max = document.body.scrollHeight - window.innerHeight;
-    window.addEventListener('resize', function () {
-      max = document.body.scrollHeight - window.innerHeight;
-    }, { passive: true });
+    function updateMax() { max = document.body.scrollHeight - window.innerHeight; }
+    window.addEventListener('resize', function () { updateMax(); check(); }, { passive: true });
+    window.addEventListener('load', function () { updateMax(); check(); });
     function check() {
       if (max <= 0) return;
       btn.classList.toggle('visible', window.scrollY / max > 0.18);
