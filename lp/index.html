@@ -140,7 +140,7 @@
         display: flex;
         justify-content: center;
         padding-top: 52px;
-        padding-bottom: 32px;
+        padding-bottom: 44px;
       }
       .hero__mobile-photo img {
         width: 155px;
@@ -1029,13 +1029,12 @@
       .hero__sub   { order: 2; margin-left: 0; margin-bottom: 28px; }
       .hero__intro { order: 3; max-width: 100%; font-size: 13px; margin-bottom: 32px; }
       .hero__mobile-cta { display: block; margin-bottom: 32px; }
-      .hero__mobile-photo { padding-bottom: 44px; }
 
       /* Esconde o CTA da seção de baixo no mobile */
       .frustration__entry-cta { display: none; }
 
-      /* Remove quebra de linha forçada só no hero */
-      .hero br { display: none; }
+      /* Remove quebras de linha forçadas nos títulos no mobile */
+      h1 br, h2 br, h3 br { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1079,7 +1078,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__mobile-photo" aria-hidden="true">
-      <img src="../img/drsandramuller.png" alt="" fetchpriority="high">
+      <img src="../img/drsandramuller.png" alt="" loading="lazy">
     </div>
     <div class="hero__inner">
       <p class="hero__intro">
@@ -1480,13 +1479,14 @@
     document.querySelectorAll('.sr').forEach(el => el.classList.add('in'));
   }
 
-  /* Botão flutuante WhatsApp — aparece após rolar 30% da página */
+  /* Botão flutuante WhatsApp — aparece após rolar ~18% da página */
   (function () {
     var btn = document.querySelector('.whatsapp-float');
     if (!btn) return;
     function check() {
-      var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      btn.classList.toggle('visible', scrolled > 0.18);
+      var max = document.body.scrollHeight - window.innerHeight;
+      if (max <= 0) return;
+      btn.classList.toggle('visible', window.scrollY / max > 0.18);
     }
     window.addEventListener('scroll', check, { passive: true });
   })();
