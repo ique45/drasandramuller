@@ -224,10 +224,25 @@
       font-style: italic;
       color: var(--muted);
       line-height: 1.1;
-      margin-bottom: 60px;
+      margin-bottom: 28px;
       margin-left: clamp(28px, 4vw, 64px);
       opacity: 0;
       animation: fadeUp 1s var(--ease) forwards 0.48s;
+    }
+
+    .hero__creds {
+      font-size: 11.5px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 52px;
+      margin-left: clamp(28px, 4vw, 64px);
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease) forwards 0.62s;
+    }
+    .hero__creds .cred-sep {
+      color: var(--gold-light);
+      margin: 0 8px;
     }
 
     .hero__intro {
@@ -994,7 +1009,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .sr { opacity: 1; transform: none; transition: none; }
-      .hero__pre, .hero__h1, .hero__sub, .hero__intro,
+      .hero__pre, .hero__h1, .hero__sub, .hero__creds, .hero__intro,
       .hero__sep, .hero__body, .hero__aside {
         opacity: 1; animation: none;
       }
@@ -1027,10 +1042,11 @@
         display: flex;
         flex-direction: column;
       }
-      .hero__h1    { order: 1; margin-bottom: 10px; }
-      .hero__sub   { order: 2; margin-left: 0; margin-bottom: 28px; }
-      .hero__intro { order: 3; max-width: 100%; font-size: 13px; margin-bottom: 32px; }
-      .hero__mobile-cta { display: block; margin-bottom: 32px; }
+      .hero__h1     { order: 1; margin-bottom: 10px; }
+      .hero__sub    { order: 2; margin-left: 0; margin-bottom: 20px; }
+      .hero__creds  { order: 3; margin-left: 0; margin-bottom: 24px; font-size: 11px; }
+      .hero__intro  { order: 4; max-width: 100%; font-size: 13px; margin-bottom: 32px; }
+      .hero__mobile-cta { display: block; order: 5; margin-bottom: 32px; }
 
       /* Esconde o CTA da seção de baixo no mobile */
       .frustration__entry-cta { display: none; }
@@ -1094,6 +1110,9 @@
       </h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
+      <p class="hero__creds">
+        13 anos de experiência<span class="cred-sep" aria-hidden="true"> · </span>Especialista em Rejuvenescimento Facial<span class="cred-sep" aria-hidden="true"> · </span>Indaial, SC
+      </p>
       <div class="hero__mobile-cta">
         <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
           <span class="btn__face">Quero agendar minha avaliação</span>
