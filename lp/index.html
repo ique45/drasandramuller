@@ -1058,7 +1058,9 @@
       .hero__h1     { order: 2; margin-bottom: 0; }
       .hero__sub    { order: 3; margin-left: 0; margin-bottom: 20px; }
       .hero__creds  { order: 4; margin-left: 0; margin-bottom: 36px; font-size: 11px; }
-      .hero__intro  { order: 5; max-width: 100%; font-size: 13px; margin-bottom: 32px; }
+      .hero__creds .cred-sep  { display: none; }
+      .hero__creds .cred-item { display: block; line-height: 2; }
+      .hero__intro  { order: 5; max-width: 100%; font-size: 15px; margin-bottom: 32px; }
       .hero__mobile-cta { display: block; order: 6; margin-bottom: 32px; }
 
       /* Esconde o CTA da seção de baixo no mobile */
@@ -1088,7 +1090,7 @@
       .pillars__hd  { margin-bottom: 52px; }
       .compare__hd  { margin-bottom: 48px; }
       .qual__hd     { margin-bottom: 48px; }
-      .qual__portrait { margin-bottom: 16px; }
+      .qual__portrait { margin: 16px auto 20px; }
 
       /* CTA: espaçamento */
       .cta__body { margin-bottom: 40px; }
@@ -1124,7 +1126,7 @@
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
       <p class="hero__creds">
-        13 anos de experiência<span class="cred-sep" aria-hidden="true"> · </span>Especialista em Rejuvenescimento Facial<span class="cred-sep" aria-hidden="true"> · </span>Indaial, SC
+        <span class="cred-item">13 anos de experiência</span><span class="cred-sep" aria-hidden="true"> · </span><span class="cred-item">Especialista em Rejuvenescimento Facial</span><span class="cred-sep" aria-hidden="true"> · </span><span class="cred-item">Indaial, SC</span>
       </p>
       <div class="hero__mobile-cta">
         <a class="btn" href="https://wa.me/WHATSAPP_NUMBER" target="_blank" rel="noopener">
