@@ -1028,6 +1028,16 @@
       .hero__creds  { order: 3; margin-left: 0; margin-bottom: 36px; font-size: 11px; text-align: center; }
       .hero__creds .cred-sep  { display: none; }
       .hero__creds .cred-item { display: block; line-height: 2; }
+      .hero__creds .cred-item::before {
+        content: '';
+        display: inline-block;
+        width: 5px; height: 5px;
+        border-radius: 50%;
+        background: var(--gold);
+        margin-right: 8px;
+        vertical-align: middle;
+        margin-bottom: 2px;
+      }
       .hero__intro  { order: 4; max-width: 100%; font-size: 15px; margin-bottom: 32px; }
       .hero__mobile-cta { display: block; order: 5; margin-bottom: 32px; }
 
