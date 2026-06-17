@@ -210,40 +210,29 @@
     }
     .hero__pre-bar { width: 36px; height: 1px; background: var(--gold); }
 
-    .hero__bread {
+    .hero__h1 {
       font-family: var(--ff-d);
-      font-size: clamp(30px, 3.8vw, 54px);
+      font-size: clamp(26px, 2.8vw, 40px);
       font-weight: 600;
+      line-height: 1.15;
       color: var(--text);
-      line-height: 1.0;
-      margin-bottom: 0;
+      margin-bottom: 8px;
       opacity: 0;
-      animation: fadeUp 0.8s var(--ease) forwards 0.2s;
+      animation: fadeUp 1s var(--ease) forwards 0.2s;
     }
-    .hero__bread strong {
+    .hero__h1 strong {
       font-size: 1.35em;
       font-weight: 700;
       font-style: normal;
       color: var(--gold);
     }
 
-    .hero__h1 {
-      font-family: var(--ff-d);
-      font-size: clamp(30px, 3.8vw, 54px);
-      font-weight: 600;
-      line-height: 1.0;
-      color: var(--text);
-      margin-bottom: 0;
-      opacity: 0;
-      animation: fadeUp 1s var(--ease) forwards 0.35s;
-    }
-
     .hero__sub {
       font-family: var(--ff-d);
-      font-size: clamp(30px, 3.8vw, 54px);
+      font-size: clamp(22px, 2.4vw, 34px);
       font-weight: 600;
       color: var(--text);
-      line-height: 1.0;
+      line-height: 1.15;
       margin-bottom: 28px;
       opacity: 0;
       animation: fadeUp 0.8s var(--ease) forwards 0.5s;
@@ -1027,7 +1016,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .sr { opacity: 1; transform: none; transition: none; }
-      .hero__pre, .hero__bread, .hero__h1, .hero__sub, .hero__creds, .hero__intro,
+      .hero__pre, .hero__h1, .hero__sub, .hero__creds, .hero__intro,
       .hero__sep, .hero__body, .hero__aside {
         opacity: 1; animation: none;
       }
@@ -1062,14 +1051,13 @@
         display: flex;
         flex-direction: column;
       }
-      .hero__bread  { order: 1; margin-bottom: 0; }
-      .hero__h1     { order: 2; margin-bottom: 0; }
-      .hero__sub    { order: 3; margin-left: 0; margin-bottom: 20px; }
-      .hero__creds  { order: 4; margin-left: 0; margin-bottom: 36px; font-size: 11px; }
+      .hero__h1     { order: 1; margin-bottom: 8px; text-align: center; }
+      .hero__sub    { order: 2; margin-left: 0; margin-bottom: 20px; text-align: center; }
+      .hero__creds  { order: 3; margin-left: 0; margin-bottom: 36px; font-size: 11px; text-align: center; }
       .hero__creds .cred-sep  { display: none; }
       .hero__creds .cred-item { display: block; line-height: 2; }
-      .hero__intro  { order: 5; max-width: 100%; font-size: 15px; margin-bottom: 32px; }
-      .hero__mobile-cta { display: block; order: 6; margin-bottom: 32px; }
+      .hero__intro  { order: 4; max-width: 100%; font-size: 15px; margin-bottom: 32px; }
+      .hero__mobile-cta { display: block; order: 5; margin-bottom: 32px; }
 
       /* Esconde o CTA da seção de baixo no mobile */
       .frustration__entry-cta { display: none; }
@@ -1124,9 +1112,7 @@
       <img src="../img/drsandramuller.png" alt="" fetchpriority="high" width="155" height="155">
     </div>
     <div class="hero__inner">
-      <p class="hero__bread">Até <strong>20 anos</strong> de</p>
-
-      <h1 class="hero__h1">rejuvenescimento</h1>
+      <h1 class="hero__h1">Até <strong>20 anos</strong> de rejuvenescimento</h1>
 
       <p class="hero__sub">sem nenhum tipo de cirurgia.</p>
       <p class="hero__creds">
