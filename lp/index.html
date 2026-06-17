@@ -31,6 +31,9 @@
       --muted:      #9A9188;
       --faded:      #C4BDB4;
 
+      --dark:       #2E2620;
+      --gold-pale:  #E8D8A0;
+
       --ink:        #0D0C0A;
       --ink-soft:   #171512;
 
@@ -200,16 +203,6 @@
     }
     @media (max-width: 900px) { .hero__bg-photo { display: none; } }
 
-    .hero__pre {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 46px;
-      opacity: 0;
-      animation: fadeUp 0.7s var(--ease) forwards 0.15s;
-    }
-    .hero__pre-bar { width: 36px; height: 1px; background: var(--gold); }
-
     .hero__h1 {
       font-family: var(--ff-d);
       font-size: clamp(38px, 4.4vw, 62px);
@@ -262,24 +255,6 @@
       margin-bottom: 56px;
       opacity: 0;
       animation: fadeUp 0.7s var(--ease) forwards 0.4s;
-    }
-
-    .hero__sep {
-      width: 0;
-      height: 1px;
-      background: linear-gradient(90deg, var(--gold), transparent);
-      margin-bottom: 36px;
-      animation: growLine 0.8s var(--ease) forwards 0.8s;
-    }
-
-    .hero__body {
-      max-width: 540px;
-      font-size: 15px;
-      font-weight: 350;
-      line-height: 1.85;
-      color: var(--body);
-      opacity: 0;
-      animation: fadeUp 0.8s var(--ease) forwards 1s;
     }
 
     .hero__aside {
@@ -539,7 +514,7 @@
     ========================================================= */
     .pillars {
       padding: 140px 0;
-      background: #2E2620;
+      background: var(--dark);
       position: relative;
     }
     .pillars > .gold-rule--full { position: absolute; top: 0; left: 0; right: 0; opacity: 0.5; }
@@ -577,7 +552,7 @@
     @media (max-width: 768px) { .pillars__grid { grid-template-columns: 1fr; } }
 
     .pillar {
-      background: #2E2620;
+      background: var(--dark);
       padding: 52px 48px 56px;
       position: relative;
       overflow: hidden;
@@ -676,6 +651,7 @@
       width: 100%;
       height: auto;
       display: block;
+      object-fit: cover;
       border: 1px solid var(--gold-line);
     }
     .result-card__labels {
@@ -814,7 +790,7 @@
        CTA — única seção escura
     ========================================================= */
     .cta {
-      background: #2E2620;
+      background: var(--dark);
       padding: 140px 0;
       position: relative;
       overflow: hidden;
@@ -856,7 +832,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, #2E2620 0%, rgba(46,38,32,0.5) 30%, transparent 65%);
+      background: linear-gradient(to right, var(--dark) 0%, rgba(46,38,32,0.5) 30%, transparent 65%);
       z-index: 1;
       pointer-events: none;
     }
@@ -1009,18 +985,11 @@
       from { opacity: 0; }
       to   { opacity: 1; }
     }
-    @keyframes growLine {
-      from { width: 0; }
-      to   { width: 52px; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .sr { opacity: 1; transform: none; transition: none; }
-      .hero__pre, .hero__h1, .hero__sub, .hero__creds, .hero__intro,
-      .hero__sep, .hero__body, .hero__aside {
+      .hero__h1, .hero__sub, .hero__creds, .hero__intro, .hero__aside {
         opacity: 1; animation: none;
       }
-      .hero__sep { width: 52px; }
     }
 
     /* =========================================================
@@ -1036,10 +1005,10 @@
     @media (max-width: 900px) {
       .hero {
         background: linear-gradient(to bottom,
-          #2E2620 0%,
-          #2E2620 7%,
-          #C9921A 26%,
-          #E8D8A0 42%,
+          var(--dark) 0%,
+          var(--dark) 7%,
+          var(--gold) 26%,
+          var(--gold-pale) 42%,
           #F8F4ED 57%,
           #ffffff 74%
         );
@@ -1109,7 +1078,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero__mobile-photo" aria-hidden="true">
-      <img src="../img/drsandramuller.png" alt="" fetchpriority="high" width="155" height="155">
+      <img src="../img/drsandramuller.png" alt="" width="155" height="155">
     </div>
     <div class="hero__inner">
       <h1 class="hero__h1">Até <strong>20 anos</strong> de rejuvenescimento</h1>
@@ -1159,10 +1128,10 @@
         <p class="frustration__lead sr d3">
           E no final, foi menos dinheiro no seu bolso, mais frustração no espelho e o problema exatamente onde estava.
         </p>
-        <blockquote class="frustration__quote sr d4">
+        <div class="frustration__quote sr d4">
           <p>O problema não está em você não ter tentado.</p>
           <p>Está em quem te atendeu sem avaliar o seu caso.</p>
-        </blockquote>
+        </div>
       </div>
 
       <div class="frustration__right">
@@ -1340,7 +1309,7 @@
 <!-- ============================================================
      CTA intermediário (após pilares)
 ============================================================ -->
-<section class="cta" aria-label="Agendamento">
+<section class="cta" aria-label="Descobrir seu protocolo">
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="cta__inner">
@@ -1439,7 +1408,7 @@
 <!-- ============================================================
      CTA / FORM — única seção escura
 ============================================================ -->
-<section class="cta" id="formulario" aria-label="Agendamento">
+<section class="cta" id="formulario" aria-label="Agendar avaliação">
   <div class="gold-rule--full"></div>
   <div class="wrap">
     <div class="cta__inner">
@@ -1515,7 +1484,7 @@
   (function () {
     var btn = document.querySelector('.whatsapp-float');
     if (!btn) return;
-    var max = document.body.scrollHeight - window.innerHeight;
+    var max = 0; /* computed on load to avoid stale height before images paint */
     function updateMax() { max = document.body.scrollHeight - window.innerHeight; }
     window.addEventListener('resize', function () { updateMax(); check(); }, { passive: true });
     window.addEventListener('load', function () { updateMax(); check(); });
