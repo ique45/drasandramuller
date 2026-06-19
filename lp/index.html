@@ -1474,7 +1474,9 @@
     var el = document.querySelector('.frustration');
     if (!el) return;
     var obs = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { el.classList.add('wipe-in'); obs.disconnect(); }
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { el.classList.add('wipe-in'); obs.disconnect(); }
+      });
     }, { threshold: 0.04 });
     obs.observe(el);
   })();
@@ -1501,6 +1503,7 @@
     window.addEventListener('resize', function () { updateMax(); check(); }, { passive: true });
     window.addEventListener('load', function () { updateMax(); check(); });
     function check() {
+      if (max <= 0) updateMax();
       if (max <= 0) return;
       btn.classList.toggle('visible', window.scrollY / max > 0.18);
     }
