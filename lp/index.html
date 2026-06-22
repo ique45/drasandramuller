@@ -154,7 +154,7 @@
     }
 
     .hero__mobile-photo { display: none; }
-    .hero__mobile-cta    { display: none; }
+    .hero__mobile-cta    { display: block; margin-top: 44px; }
     @media (max-width: 900px) {
       .hero__mobile-photo {
         display: flex;
@@ -244,7 +244,7 @@
       font-weight: 400;
       letter-spacing: 0.08em;
       color: var(--gold);
-      margin-bottom: 80px;
+      margin-bottom: 28px;
       opacity: 0;
       animation: fadeUp 0.8s var(--ease) forwards 0.62s;
     }
@@ -398,11 +398,7 @@
       height: 0%;
     }
 
-    .frustration__entry-cta {
-      display: flex;
-      justify-content: center;
-      padding: 16px 0 56px;
-    }
+    .frustration__entry-cta { display: none; }
     @media (prefers-reduced-motion: reduce) {
       .frustration::after { display: none; }
     }
@@ -1074,9 +1070,9 @@
         margin-bottom: 2px;
       }
       .hero__intro  { order: 4; max-width: 100%; font-size: 15px; margin-bottom: 32px; }
-      .hero__mobile-cta { display: block; order: 5; margin-bottom: 32px; }
+      .hero__mobile-cta { display: block; order: 5; margin-bottom: 32px; margin-top: 0; }
 
-      /* Esconde o CTA da seção de baixo no mobile */
+      /* Esconde o CTA da seção frustração no mobile — o botão já está no hero */
       .frustration__entry-cta { display: none; }
 
       /* Evita "semanas," sozinho na linha — flui naturalmente sem o br */
