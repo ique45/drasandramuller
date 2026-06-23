@@ -983,39 +983,36 @@
     .footer__social:hover { color: var(--gold); }
     .footer__social svg { width: 14px; height: 14px; fill: currentColor; }
 
-    /* Botão flutuante WhatsApp — mobile only */
-    .whatsapp-float { display: none; }
-    @media (max-width: 900px) {
-      .whatsapp-float {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        bottom: 22px;
-        right: 18px;
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: #1A1208;
-        border: 1.5px solid var(--gold);
-        box-shadow: 0 4px 18px rgba(0,0,0,0.45), 0 0 0 4px rgba(201,146,26,0.12);
-        z-index: 900;
-        opacity: 0;
-        transform: scale(0.7) translateY(8px);
-        transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
-        pointer-events: none;
-      }
-      .whatsapp-float.visible {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-        pointer-events: auto;
-        animation: waPulse 2.8s ease-in-out infinite;
-      }
-      .whatsapp-float svg {
-        width: 26px;
-        height: 26px;
-        fill: var(--gold);
-      }
+    /* Botão flutuante WhatsApp */
+    .whatsapp-float {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 22px;
+      right: 18px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #1A1208;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.45), 0 0 0 4px rgba(201,146,26,0.12);
+      z-index: 900;
+      opacity: 0;
+      transform: scale(0.7) translateY(8px);
+      transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+      pointer-events: none;
+    }
+    .whatsapp-float.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+      animation: waPulse 2.8s ease-in-out infinite;
+    }
+    .whatsapp-float svg {
+      width: 26px;
+      height: 26px;
+      fill: var(--gold);
     }
 
     /* =========================================================
