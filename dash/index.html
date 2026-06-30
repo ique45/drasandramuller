@@ -63,7 +63,7 @@
     <div class="flex items-center justify-between mb-8">
       <div>
         <p class="metric-label" style="margin-bottom:.25rem;">Dra. Sandra Müller</p>
-        <h1 style="font-size:1.375rem;font-weight:700;color:#1A1208;">Cliques no WhatsApp</h1>
+        <h1 style="font-size:1.375rem;font-weight:700;color:#1A1208;">WhatsApp</h1>
       </div>
       <div class="flex gap-2">
         <button class="range-btn active" onclick="setRange(7, this)">7 dias</button>
@@ -94,43 +94,6 @@
       <div style="height:220px;">
         <canvas id="chart-day"></canvas>
       </div>
-    </div>
-
-    <!-- Tabelas: lado a lado -->
-    <div class="grid grid-cols-2 gap-4 mb-6">
-
-      <!-- Por origem -->
-      <div class="card overflow-hidden">
-        <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
-          <p class="metric-label" style="margin:0;">Por origem</p>
-        </div>
-        <table>
-          <thead><tr><th>Fonte</th><th style="text-align:right;">Cliques</th></tr></thead>
-          <tbody id="tbl-source"></tbody>
-        </table>
-      </div>
-
-      <!-- Por campanha -->
-      <div class="card overflow-hidden">
-        <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
-          <p class="metric-label" style="margin:0;">Por campanha</p>
-        </div>
-        <table>
-          <thead><tr><th>Campanha</th><th style="text-align:right;">Cliques</th></tr></thead>
-          <tbody id="tbl-campaign"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- Por botão -->
-    <div class="card overflow-hidden mb-6">
-      <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
-        <p class="metric-label" style="margin:0;">Por botão clicado</p>
-      </div>
-      <table>
-        <thead><tr><th>Botão</th><th style="text-align:right;">Cliques</th></tr></thead>
-        <tbody id="tbl-button"></tbody>
-      </table>
     </div>
 
     <!-- Cliques recentes -->
@@ -201,10 +164,6 @@
       // Gráfico
       renderChart(d.byDay);
 
-      // Tabelas
-      renderTable('tbl-source',   d.bySource,   ['source',   'clicks'], ['Fonte',    'Cliques']);
-      renderTable('tbl-campaign', d.byCampaign, ['campaign', 'clicks'], ['Campanha', 'Cliques']);
-      renderButtonTable(d.byButton);
       renderRecent(d.recent);
 
     } catch(e) { alert('Falha ao carregar: ' + e.message); }
