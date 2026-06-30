@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard · Dra. Sandra Müller</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --gold: #C9921A;
+    --gold-l: #E8B830;
+    --dark: #1A1208;
+  }
+  body { background: #F5F4F2; font-family: ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  .card { background: #fff; border: 1px solid #E5E2DC; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+  .metric-value { font-size: 2.25rem; font-weight: 700; color: var(--dark); line-height: 1; }
+  .metric-label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9A9188; margin-bottom: .5rem; }
+  .range-btn { padding: .25rem .75rem; font-size: .8125rem; border: 1px solid #E5E2DC; background: #fff; border-radius: 8px; cursor: pointer; color: #6B6560; transition: all .15s; }
+  .range-btn:hover { border-color: var(--gold); color: var(--dark); }
+  .range-btn.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+  table { width: 100%; border-collapse: collapse; }
+  th { font-size: .6875rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9A9188; padding: .5rem .75rem; text-align: left; border-bottom: 1px solid #E5E2DC; }
+  td { padding: .625rem .75rem; font-size: .875rem; color: #4A453F; border-bottom: 1px solid #F0EDE8; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #FAF8F5; }
+  .badge { display: inline-block; padding: .125rem .5rem; border-radius: 999px; font-size: .6875rem; font-weight: 500; }
+  .badge-mobile { background: #EFF6FF; color: #1D4ED8; }
+  .badge-desktop { background: #F0F0F5; color: #6B6560; }
+  .src-hero   { background: #FEF3C7; color: #92400E; }
+  .src-cta1   { background: #D1FAE5; color: #065F46; }
+  .src-cta2   { background: #DBEAFE; color: #1E40AF; }
+  .src-float  { background: #FCE7F3; color: #9D174D; }
+  .src-unknown{ background: #F3F4F6; color: #6B7280; }
+  #auth-screen { position: fixed; inset: 0; background: #F5F4F2; display: flex; align-items: center; justify-content: center; z-index: 50; }
+  #main { display: none; }
+</style>
+</head>
+<body>
+
+<!-- Tela de autenticação -->
+<div id="auth-screen">
+  <div class="card p-8 w-full max-w-sm">
+    <p style="font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9A9188;margin-bottom:.5rem;">Dra. Sandra Müller</p>
+    <h1 style="font-size:1.375rem;font-weight:700;color:#1A1208;margin-bottom:1.5rem;">Dashboard</h1>
+    <label style="display:block;font-size:.8125rem;font-weight:500;color:#4A453F;margin-bottom:.5rem;">Chave de acesso</label>
+    <input id="key-input" type="password" placeholder="••••••••••••" autocomplete="current-password"
+      style="width:100%;padding:.625rem .875rem;border:1px solid #E5E2DC;border-radius:8px;font-size:.9375rem;outline:none;margin-bottom:1rem;"
+      onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()" style="width:100%;padding:.625rem;background:#1A1208;color:#fff;border:none;border-radius:8px;font-size:.875rem;font-weight:600;cursor:pointer;">
+      Entrar
+    </button>
+    <p id="auth-error" style="display:none;color:#DC2626;font-size:.8125rem;margin-top:.75rem;text-align:center;">Chave incorreta.</p>
+  </div>
+</div>
+
+<!-- Dashboard principal -->
+<div id="main">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <p class="metric-label" style="margin-bottom:.25rem;">Dra. Sandra Müller</p>
+        <h1 style="font-size:1.375rem;font-weight:700;color:#1A1208;">Cliques no WhatsApp</h1>
+      </div>
+      <div class="flex gap-2">
+        <button class="range-btn active" onclick="setRange(7, this)">7 dias</button>
+        <button class="range-btn" onclick="setRange(30, this)">30 dias</button>
+        <button class="range-btn" onclick="setRange(90, this)">90 dias</button>
+      </div>
+    </div>
+
+    <!-- Cards de métricas -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="card p-5">
+        <p class="metric-label">Total hoje</p>
+        <p class="metric-value" id="m-today">—</p>
+      </div>
+      <div class="card p-5">
+        <p class="metric-label">No período</p>
+        <p class="metric-value" id="m-period">—</p>
+      </div>
+      <div class="card p-5">
+        <p class="metric-label">Total geral</p>
+        <p class="metric-value" id="m-total">—</p>
+      </div>
+    </div>
+
+    <!-- Gráfico -->
+    <div class="card p-5 mb-6">
+      <p class="metric-label" style="margin-bottom:1rem;">Cliques por dia</p>
+      <div style="height:220px;">
+        <canvas id="chart-day"></canvas>
+      </div>
+    </div>
+
+    <!-- Tabelas: lado a lado -->
+    <div class="grid grid-cols-2 gap-4 mb-6">
+
+      <!-- Por origem -->
+      <div class="card overflow-hidden">
+        <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
+          <p class="metric-label" style="margin:0;">Por origem</p>
+        </div>
+        <table>
+          <thead><tr><th>Fonte</th><th style="text-align:right;">Cliques</th></tr></thead>
+          <tbody id="tbl-source"></tbody>
+        </table>
+      </div>
+
+      <!-- Por campanha -->
+      <div class="card overflow-hidden">
+        <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
+          <p class="metric-label" style="margin:0;">Por campanha</p>
+        </div>
+        <table>
+          <thead><tr><th>Campanha</th><th style="text-align:right;">Cliques</th></tr></thead>
+          <tbody id="tbl-campaign"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Por botão -->
+    <div class="card overflow-hidden mb-6">
+      <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
+        <p class="metric-label" style="margin:0;">Por botão clicado</p>
+      </div>
+      <table>
+        <thead><tr><th>Botão</th><th style="text-align:right;">Cliques</th></tr></thead>
+        <tbody id="tbl-button"></tbody>
+      </table>
+    </div>
+
+    <!-- Cliques recentes -->
+    <div class="card overflow-hidden">
+      <div class="px-5 py-4" style="border-bottom:1px solid #E5E2DC;">
+        <p class="metric-label" style="margin:0;">Cliques recentes</p>
+      </div>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Data / Hora</th>
+              <th>Botão</th>
+              <th>Origem</th>
+              <th>Campanha</th>
+              <th>Dispositivo</th>
+            </tr>
+          </thead>
+          <tbody id="tbl-recent"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  let DASH_KEY = '';
+  let currentDays = 7;
+  let dayChart = null;
+
+  const BUTTON_LABELS = { hero: 'Hero', cta1: '1º CTA', cta2: 'CTA Final', float: 'Botão flutuante', unknown: 'Desconhecido' };
+  const BUTTON_CLASSES = { hero: 'src-hero', cta1: 'src-cta1', cta2: 'src-cta2', float: 'src-float', unknown: 'src-unknown' };
+
+  function doLogin() {
+    const k = document.getElementById('key-input').value.trim();
+    if (!k) return;
+    DASH_KEY = k;
+    load();
+  }
+
+  function setRange(days, btn) {
+    currentDays = days;
+    document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    load();
+  }
+
+  async function load() {
+    try {
+      const r = await fetch(`/api/clicks?key=${encodeURIComponent(DASH_KEY)}&days=${currentDays}`);
+      const d = await r.json();
+      if (d.error === 'Unauthorized') {
+        document.getElementById('auth-error').style.display = 'block';
+        return;
+      }
+      if (d.error) { alert('Erro: ' + d.error); return; }
+
+      // Mostra dashboard
+      document.getElementById('auth-screen').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
+
+      // Métricas
+      document.getElementById('m-today').textContent  = d.today;
+      document.getElementById('m-period').textContent = d.period;
+      document.getElementById('m-total').textContent  = d.total;
+
+      // Gráfico
+      renderChart(d.byDay);
+
+      // Tabelas
+      renderTable('tbl-source',   d.bySource,   ['source',   'clicks'], ['Fonte',    'Cliques']);
+      renderTable('tbl-campaign', d.byCampaign, ['campaign', 'clicks'], ['Campanha', 'Cliques']);
+      renderButtonTable(d.byButton);
+      renderRecent(d.recent);
+
+    } catch(e) { alert('Falha ao carregar: ' + e.message); }
+  }
+
+  function renderChart(rows) {
+    const labels = rows.map(r => {
+      const [y, m, d] = r.day.split('-');
+      return `${d}/${m}`;
+    });
+    const data = rows.map(r => r.clicks);
+
+    if (dayChart) dayChart.destroy();
+    const ctx = document.getElementById('chart-day').getContext('2d');
+    dayChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Cliques',
+          data,
+          borderColor: '#C9921A',
+          backgroundColor: 'rgba(201,146,26,0.08)',
+          borderWidth: 2,
+          pointBackgroundColor: '#C9921A',
+          pointRadius: 4,
+          fill: true,
+          tension: 0.3,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, ticks: { precision: 0, color: '#9A9188' }, grid: { color: '#F0EDE8' } },
+          x: { ticks: { color: '#9A9188' }, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  function renderTable(id, rows, keys, labels) {
+    const tbody = document.getElementById(id);
+    if (!rows.length) { tbody.innerHTML = `<tr><td colspan="2" style="color:#9A9188;text-align:center;padding:1.5rem;">Sem dados</td></tr>`; return; }
+    const total = rows.reduce((s, r) => s + r[keys[1]], 0);
+    tbody.innerHTML = rows.map(r => {
+      const pct = total ? Math.round(r[keys[1]] / total * 100) : 0;
+      return `<tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:.5rem;">
+            <span>${esc(r[keys[0]])}</span>
+            <span style="font-size:.75rem;color:#9A9188;">${pct}%</span>
+          </div>
+          <div style="margin-top:4px;height:3px;background:#F0EDE8;border-radius:2px;">
+            <div style="width:${pct}%;height:100%;background:#C9921A;border-radius:2px;"></div>
+          </div>
+        </td>
+        <td style="text-align:right;font-weight:600;">${r[keys[1]]}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function renderButtonTable(rows) {
+    const tbody = document.getElementById('tbl-button');
+    if (!rows.length) { tbody.innerHTML = `<tr><td colspan="2" style="color:#9A9188;text-align:center;padding:1.5rem;">Sem dados</td></tr>`; return; }
+    tbody.innerHTML = rows.map(r => {
+      const cls = BUTTON_CLASSES[r.button] || 'src-unknown';
+      const lbl = BUTTON_LABELS[r.button] || r.button;
+      return `<tr>
+        <td><span class="badge ${cls}">${esc(lbl)}</span></td>
+        <td style="text-align:right;font-weight:600;">${r.clicks}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  function renderRecent(rows) {
+    const tbody = document.getElementById('tbl-recent');
+    if (!rows.length) { tbody.innerHTML = `<tr><td colspan="5" style="color:#9A9188;text-align:center;padding:1.5rem;">Nenhum clique registrado ainda</td></tr>`; return; }
+    tbody.innerHTML = rows.map(r => {
+      const dt = new Date(r.timestamp * 1000);
+      const date = dt.toLocaleDateString('pt-BR') + ' ' + dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      const btnCls = BUTTON_CLASSES[r.src] || 'src-unknown';
+      const btnLbl = BUTTON_LABELS[r.src] || r.src;
+      const device = r.is_mobile ? `<span class="badge badge-mobile">${esc(r.os)}</span>` : `<span class="badge badge-desktop">${esc(r.os)}</span>`;
+      return `<tr>
+        <td class="mono" style="font-size:.8125rem;white-space:nowrap;">${date}</td>
+        <td><span class="badge ${btnCls}">${esc(btnLbl)}</span></td>
+        <td style="color:#1A1208;">${esc(r.utm_source || '—')}</td>
+        <td style="color:#4A453F;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${esc(r.utm_campaign || '—')}</td>
+        <td>${device} <span style="font-size:.75rem;color:#9A9188;">${esc(r.browser)}</span></td>
+      </tr>`;
+    }).join('');
+  }
+
+  function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // Login automático se key está na URL
+  const urlKey = new URLSearchParams(location.search).get('key');
+  if (urlKey) {
+    DASH_KEY = urlKey;
+    history.replaceState(null, '', '/dash');
+    load();
+  }
+</script>
+</body>
+</html>
